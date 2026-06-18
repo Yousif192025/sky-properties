@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sky Properties | سكاي بروبرتيز - منصة إدارة العقارات الذكية</title>
+  <meta name="description" content="منصة Sky Properties لإدارة وتسويق العقارات بحلول رقمية متقدمة، لوحات تحكم، تقارير ذكية، وأتمتة العقارات." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>" />
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Sky Properties | سكاي بروبرتيز" />
+  <meta property="og:description" content="منصة إدارة العقارات المتكاملة بحلول رقمية وتقارير ذكية." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="#" />
+  <meta name="theme-color" content="#0A84FF" />
+
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --primary: #0A84FF;
+      --secondary: #06B6D4;
+      --bg-dark: #07111F;
+      --bg-card: #101B2D;
+      --text-light: #F1F5F9;
+      --text-muted: #94A3B8;
+      --border-glow: rgba(10, 132, 255, 0.2);
+      --shadow-card: 0 20px 40px -12px rgba(0,0,0,0.8);
+      --radius-card: 24px;
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    /* ===== Reset & Base ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding: 0 1.5rem;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* ===== Accessibility / Focus ===== */
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+
+    /* ===== Buttons ===== */
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 8px 20px rgba(10, 132, 255, 0.3);
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: #0066cc;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(10, 132, 255, 0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--primary);
+      color: var(--text-light);
+      padding: 0.9rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-block;
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* ===== Header / Nav ===== */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .logo span {
+      background: var(--primary);
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: #fff;
+    }
+    .nav-cta {
+      background: var(--primary);
+      color: #fff !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+    }
+    .nav-cta:hover {
+      background: #0066cc !important;
+      color: #fff !important;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 3rem 0 5rem;
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+    .hero-content h1 span {
+      color: var(--primary);
+    }
+    .hero-content p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      margin: 1.5rem 0 2rem;
+      max-width: 90%;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .hero-image {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      padding: 1rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(10, 132, 255, 0.15);
+    }
+    .hero-image svg {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      background: #0a1a2e;
+    }
+
+    /* ===== Section Headers ===== */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 650px;
+    }
+
+    /* ===== Features Grid ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius-card);
+      border: 1px solid transparent;
+      transition: var(--transition);
+      box-shadow: var(--shadow-card);
+    }
+    .feature-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-8px);
+    }
+    .feature-card .icon {
+      background: rgba(10, 132, 255, 0.12);
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.4rem;
+    }
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ===== Stats ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      background: var(--bg-card);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-card);
+      margin: 2rem 0 4rem;
+      text-align: center;
+      border: 1px solid rgba(10, 132, 255, 0.1);
+    }
+    .stats-grid h2 {
+      font-size: 2.8rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .stats-grid p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* ===== Mockup / Dashboard ===== */
+    .mockup-section {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      padding: 2rem;
+      border: 1px solid rgba(10, 132, 255, 0.1);
+      margin: 3rem 0;
+    }
+    .mockup-section svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* ===== Journey ===== */
+    .journey-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+    .journey-step {
+      background: var(--bg-card);
+      padding: 1.8rem 1.2rem;
+      border-radius: var(--radius-card);
+      border-right: 4px solid var(--primary);
+      transition: var(--transition);
+    }
+    .journey-step:hover {
+      transform: translateX(-6px);
+    }
+    .journey-step h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .journey-step p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      background: linear-gradient(145deg, #0a1a2e, var(--bg-card));
+      border-radius: var(--radius-card);
+      padding: 4rem 2rem;
+      text-align: center;
+      border: 1px solid rgba(10, 132, 255, 0.2);
+      margin: 4rem 0;
+    }
+    .cta-section h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+    .cta-section p {
+      color: var(--text-muted);
+      margin: 1rem 0 2rem;
+      font-size: 1.2rem;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+    }
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content p {
+        max-width: 100%;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: 600px) {
+      body { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .hero-content h1 { font-size: 2.3rem; }
+      .cta-section h2 { font-size: 2rem; }
+      .footer { flex-direction: column; align-items: center; }
+    }
+
+    /* ===== Lazy loading / utility ===== */
+    .lazy {
+      opacity: 0;
+      transition: opacity 0.6s;
+    }
+    .lazy.loaded {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="container">
+    <nav class="navbar" aria-label="القائمة الرئيسية">
+      <div class="logo">
+        <span>SP</span>
+        <span style="color: var(--text-light);">Sky Properties</span>
+      </div>
+      <div class="nav-links">
+        <a href="#">الرئيسية</a>
+        <a href="#features">المميزات</a>
+        <a href="#solutions">الحلول</a>
+        <a href="#portfolio">أعمالنا</a>
+        <a href="#contact">اتصل</a>
+        <a href="#" class="nav-cta">احجز عرضاً</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="container hero" aria-label="القسم الرئيسي">
+      <div class="hero-content">
+        <h1>إدارة عقاراتك <span>بذكاء</span> واحترافية</h1>
+        <p>منصة Sky Properties المتكاملة تمنحك تحليلاً فورياً، أتمتة ذكية، ولوحات تحكم متقدمة لإدارة ممتلكاتك بسلاسة.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary">احجز عرضاً تجريبياً</a>
+          <a href="#" class="btn-outline">استكشف الحلول</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- Mockup Dashboard SVG (minimal) -->
+        <svg viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="500" height="300" rx="16" fill="#0E1A2B" />
+          <rect x="20" y="20" width="460" height="40" rx="8" fill="#1A2C42" />
+          <circle cx="40" cy="40" r="10" fill="#0A84FF" />
+          <rect x="70" y="30" width="100" height="20" rx="6" fill="#2A3F5A" />
+          <rect x="380" y="30" width="80" height="20" rx="6" fill="#2A3F5A" />
+          
+          <rect x="20" y="80" width="140" height="100" rx="12" fill="#15263B" />
+          <rect x="30" y="95" width="40" height="40" rx="8" fill="#0A84FF" opacity="0.2" />
+          <rect x="30" y="145" width="120" height="16" rx="6" fill="#1A2C42" />
+          
+          <rect x="180" y="80" width="140" height="100" rx="12" fill="#15263B" />
+          <rect x="190" y="95" width="40" height="40" rx="8" fill="#06B6D4" opacity="0.2" />
+          <rect x="190" y="145" width="120" height="16" rx="6" fill="#1A2C42" />
+          
+          <rect x="340" y="80" width="140" height="100" rx="12" fill="#15263B" />
+          <rect x="350" y="95" width="40" height="40" rx="8" fill="#0A84FF" opacity="0.2" />
+          <rect x="350" y="145" width="120" height="16" rx="6" fill="#1A2C42" />
+
+          <rect x="20" y="200" width="220" height="80" rx="12" fill="#15263B" />
+          <rect x="30" y="215" width="80" height="20" rx="6" fill="#0A84FF" opacity="0.3" />
+          <rect x="30" y="245" width="180" height="16" rx="6" fill="#1A2C42" />
+          
+          <rect x="260" y="200" width="220" height="80" rx="12" fill="#15263B" />
+          <rect x="270" y="215" width="80" height="20" rx="6" fill="#06B6D4" opacity="0.3" />
+          <rect x="270" y="245" width="180" height="16" rx="6" fill="#1A2C42" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section id="features" class="container">
+      <h2 class="section-title">المميزات الرئيسية</h2>
+      <p class="section-sub">كل ما تحتاجه لإدارة عقاراتك في منصة واحدة ذكية ومتكاملة.</p>
+      <div class="features-grid">
+        <div class="feature-card"><div class="icon">🏢</div><h3>إدارة العقارات</h3><p>سجّل عقاراتك مع تفاصيل كاملة ورفع المستندات.</p></div>
+        <div class="feature-card"><div class="icon">👥</div><h3>إدارة المستأجرين</h3><p>ملفات المستأجرين، تواريخ الإيجار، والتواصل المباشر.</p></div>
+        <div class="feature-card"><div class="icon">🔧</div><h3>إدارة الصيانة</h3><p>تتبع طلبات الصيانة وجدولة الفرق الفنية.</p></div>
+        <div class="feature-card"><div class="icon">📄</div><h3>العقود الرقمية</h3><p>إنشاء وتوقيع العقود إلكترونياً بسهولة.</p></div>
+        <div class="feature-card"><div class="icon">📊</div><h3>التقارير الذكية</h3><p>تقارير دورية عن الأداء والإشغال والإيرادات.</p></div>
+        <div class="feature-card"><div class="icon">⚡</div><h3>التحليلات الفورية</h3><p>لوحات تحكم حية مع مؤشرات أداء رئيسية.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="container">
+      <div class="stats-grid">
+        <div><h2>99%</h2><p>رضا المستخدمين</p></div>
+        <div><h2>24/7</h2><p>دعم متواصل</p></div>
+        <div><h2>100+</h2><p>عقار تجريبي</p></div>
+      </div>
+    </section>
+
+    <!-- ===== MOCKUP ===== -->
+    <section class="container mockup-section">
+      <h2 class="section-title" style="font-size: 1.8rem;">نظام إدارة متقدم</h2>
+      <p class="section-sub" style="margin-bottom: 1.5rem;">لوحات تحكم مرنة مع رؤية 360° لمحفظتك العقارية.</p>
+      <svg viewBox="0 0 800 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="360" rx="20" fill="#0D1A2B" />
+        <rect x="20" y="20" width="760" height="50" rx="10" fill="#182A40" />
+        <circle cx="40" cy="45" r="8" fill="#0A84FF" />
+        <rect x="70" y="35" width="120" height="20" rx="6" fill="#263B55" />
+        <rect x="650" y="35" width="100" height="20" rx="6" fill="#263B55" />
+        
+        <rect x="20" y="90" width="280" height="120" rx="16" fill="#102232" />
+        <rect x="40" y="110" width="80" height="16" rx="6" fill="#0A84FF" opacity="0.3" />
+        <rect x="40" y="140" width="200" height="20" rx="6" fill="#1A2F45" />
+        <rect x="40" y="170" width="180" height="20" rx="6" fill="#1A2F45" />
+        
+        <rect x="320" y="90" width="220" height="120" rx="16" fill="#102232" />
+        <rect x="340" y="110" width="80" height="16" rx="6" fill="#06B6D4" opacity="0.3" />
+        <rect x="340" y="140" width="170" height="20" rx="6" fill="#1A2F45" />
+        <rect x="340" y="170" width="140" height="20" rx="6" fill="#1A2F45" />
+
+        <rect x="560" y="90" width="220" height="120" rx="16" fill="#102232" />
+        <rect x="580" y="110" width="80" height="16" rx="6" fill="#0A84FF" opacity="0.3" />
+        <rect x="580" y="140" width="170" height="20" rx="6" fill="#1A2F45" />
+        <rect x="580" y="170" width="140" height="20" rx="6" fill="#1A2F45" />
+
+        <rect x="20" y="230" width="760" height="110" rx="16" fill="#102232" />
+        <rect x="40" y="250" width="300" height="16" rx="6" fill="#0A84FF" opacity="0.2" />
+        <rect x="40" y="280" width="480" height="16" rx="6" fill="#1A2F45" />
+        <rect x="40" y="310" width="360" height="16" rx="6" fill="#1A2F45" />
+        <rect x="660" y="250" width="100" height="40" rx="8" fill="#0A84FF" opacity="0.6" />
+      </svg>
+    </section>
+
+    <!-- ===== JOURNEY ===== -->
+    <section class="container">
+      <h2 class="section-title">رحلة العميل</h2>
+      <p class="section-sub">من إضافة العقار إلى التقارير الذكية، نرافقك في كل خطوة.</p>
+      <div class="journey-grid">
+        <div class="journey-step"><h4>➕ إضافة العقار</h4><p>أدخل بيانات العقار، الصور، والموقع.</p></div>
+        <div class="journey-step"><h4>🔑 التأجير</h4><p>نشر العقار، استقبال الطلبات، وإتمام التعاقد.</p></div>
+        <div class="journey-step"><h4>🧑‍💼 إدارة المستأجر</h4><p>متابعة الإيجارات، التواصل، وطلبات الصيانة.</p></div>
+        <div class="journey-step"><h4>📈 التقارير</h4><p>تحليل الأداء والإشغال والإيرادات بشكل دوري.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="container cta-section">
+      <h2>ابدأ التحول الرقمي للعقارات</h2>
+      <p>انضم إلى أكثر من 100 عميل يستخدمون Sky Properties لإدارة عقاراتهم بذكاء.</p>
+      <a href="#" class="btn-primary" style="font-size: 1.2rem; padding: 1rem 3rem;">احجز عرضاً تجريبياً</a>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="container footer">
+    <div>© 2026 Sky Properties — نموذج أعمال CyberPath Digital</div>
+    <div class="footer-links">
+      <a href="#">سياسة الخصوصية</a>
+      <a href="#">اتصل بنا</a>
+      <a href="#">طلب عرض</a>
+    </div>
+  </footer>
+
+  <!-- ===== JavaScript (minimal) ===== -->
+  <script>
+    (function() {
+      // Lazy loading simulation for demo (just a class toggling)
+      const lazyElements = document.querySelectorAll('.lazy');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('loaded');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -50px 0px' });
+        lazyElements.forEach(el => observer.observe(el));
+      } else {
+        // fallback
+        lazyElements.forEach(el => el.classList.add('loaded'));
+      }
+
+      // smooth anchor (optional)
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
