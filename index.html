@@ -13,10 +13,14 @@
     <meta property="og:description" content="منصة إدارة العقارات المتكاملة بحلول رقمية وتقارير ذكية." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://yousif192025.github.io/sky-properties/" />
-    <meta property="og:image" content="https://yousif192025.github.io/sky-properties/assets/images/og-image.jpg" />
     
     <!-- Theme Color -->
-    <meta name="theme-color" content="#0A84FF" />
+    <meta name="theme-color" content="#0F1B2B" />
+    
+    <!-- Google Fonts - إضافة خطوط جديدة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -35,32 +39,1212 @@
     }
     </script>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/components.css">
+    <style>
+        /* ============================================================
+           SKY PROPERTIES — STYLE SHEET (محسّن)
+           تم الحفاظ على الهيكل الأصلي مع إضافة تحسينات بصرية
+           ============================================================ */
+        
+        /* ---------- Variables (محسّنة) ---------- */
+        :root {
+            --primary: #0A84FF;
+            --primary-dark: #0066CC;
+            --secondary: #06B6D4;
+            --accent: #FF8A4C;          /* لمسة دافئة من الملف المرفق */
+            --bg-dark: #07111F;
+            --bg-card: #101B2D;
+            --bg-card-hover: #1A2D4A;
+            --bg-soft: #0F1B2B;
+            --text-light: #F1F5F9;
+            --text-muted: #94A3B8;
+            --text-mist: #C8D3E0;
+            --text-mist-dim: #8B9CB3;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --border-glow: rgba(10, 132, 255, 0.2);
+            --shadow-card: 0 20px 40px -12px rgba(0, 0, 0, 0.8);
+            --shadow-glow: 0 0 40px rgba(10, 132, 255, 0.1);
+            --shadow-accent: 0 10px 26px -8px rgba(255, 138, 76, 0.25);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-display: 'Cairo', sans-serif;
+            --font-body: 'Tajawal', 'Segoe UI', system-ui, sans-serif;
+            --max-width: 1280px;
+            --header-height: 72px;
+        }
+
+        /* ---------- Reset & Base (محسّن) ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.65;
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        ::selection {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        img, svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ---------- Accessibility ---------- */
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+            border-radius: 6px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* ---------- Typography ---------- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            letter-spacing: -0.01em;
+        }
+
+        /* ---------- Buttons (محسّنة) ---------- */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: #fff !important;
+            border: none;
+            padding: 0.85rem 2.2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+            box-shadow: 0 10px 26px -8px rgba(10, 132, 255, 0.45);
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px -6px rgba(10, 132, 255, 0.55);
+            color: #fff !important;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-light);
+            padding: 0.85rem 2.2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: transform 0.25s, border-color 0.25s, color 0.25s;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* ---------- Header / Nav (محسّن) ---------- */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 17, 31, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            height: var(--header-height);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(7, 17, 31, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--header-height);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .logo-icon {
+            background: linear-gradient(155deg, var(--accent), var(--primary) 130%);
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 900;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .logo-icon::after {
+            content: "";
+            position: absolute;
+            inset: 9px 7px 7px;
+            background: linear-gradient(to top, rgba(7, 17, 31, 0.5) 0 35%, transparent 35%);
+            clip-path: polygon(0% 100%, 0% 55%, 18% 55%, 18% 30%, 36% 30%, 36% 65%, 54% 65%, 54% 15%, 72% 15%, 72% 45%, 100% 45%, 100% 100%);
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            color: var(--text-light);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #fff;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-light);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ---------- Hero Section (محسّن) ---------- */
+        .hero {
+            padding: calc(var(--header-height) + 2rem) 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 70%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(10, 132, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 138, 76, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(255, 138, 76, 0.2);
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content h1 .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            color: var(--text-mist);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 90%;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .stat-label {
+            color: var(--text-mist-dim);
+            font-size: 0.85rem;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--border-color);
+        }
+
+        /* ---------- Hero Visual (محسّن) ---------- */
+        .hero-visual {
+            position: relative;
+        }
+
+        .dashboard-mockup {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: var(--shadow-card), var(--shadow-glow);
+            transition: var(--transition);
+        }
+
+        .dashboard-mockup:hover {
+            transform: translateY(-5px);
+            border-color: rgba(10, 132, 255, 0.2);
+        }
+
+        .mockup-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .mockup-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .mockup-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .mockup-dots span:first-child { background: #EF4444; }
+        .mockup-dots span:nth-child(2) { background: #F59E0B; }
+        .mockup-dots span:last-child { background: #10B981; }
+
+        .mockup-title {
+            color: var(--text-mist);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .mockup-body {
+            padding: 1.5rem;
+        }
+
+        .mockup-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mockup-stat {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+        }
+
+        .mockup-stat .stat-value {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .mockup-stat .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-mist-dim);
+        }
+
+        .mockup-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            height: 120px;
+            padding: 1rem 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 4px 4px 0 0;
+            min-height: 20px;
+            transition: var(--transition);
+            animation: chart-grow 1s ease forwards;
+            opacity: 0;
+            transform-origin: bottom;
+        }
+
+        @keyframes chart-grow {
+            from {
+                opacity: 0;
+                transform: scaleY(0);
+            }
+            to {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+
+        .mockup-recent {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .recent-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius-sm);
+        }
+
+        .recent-status {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .recent-status.active { background: #EF4444; }
+        .recent-status.warning { background: #F59E0B; }
+        .recent-status.success { background: #10B981; }
+
+        .recent-text {
+            color: var(--text-mist);
+            font-size: 0.85rem;
+        }
+
+        /* Float Badge من الملف المرفق */
+        .float-badge {
+            position: absolute;
+            left: -18px;
+            bottom: 18px;
+            background: var(--bg-soft);
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 0.8rem 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            font-weight: 700;
+            backdrop-filter: blur(8px);
+        }
+
+        .float-badge .ico {
+            width: 30px;
+            height: 30px;
+            border-radius: 9px;
+            background: rgba(255, 138, 76, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex: none;
+        }
+
+        .float-badge .sub {
+            color: var(--text-mist-dim);
+            font-weight: 500;
+            font-size: 0.75rem;
+        }
+
+        /* ---------- Section Shell ---------- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(10, 132, 255, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 1rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            border: 1px solid rgba(10, 132, 255, 0.1);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            color: var(--text-mist);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ---------- Features (محسّن) ---------- */
+        .features {
+            padding: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 2rem 1.6rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, border-color 0.3s, background 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            background: radial-gradient(circle at 85% -10%, rgba(10, 132, 255, 0.08), transparent 60%);
+            transition: opacity 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(10, 132, 255, 0.35);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            position: relative;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .feature-card p {
+            color: var(--text-mist-dim);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        .feature-link {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+            display: inline-block;
+        }
+
+        .feature-link:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* ---------- Stats Section (من الملف المرفق) ---------- */
+        .stats-section {
+            background: var(--bg-soft);
+            padding: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+
+        .stat-block {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.8rem 1.4rem;
+            background: rgba(255, 255, 255, 0.02);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-block:hover {
+            border-color: rgba(10, 132, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .stat-block .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--text-light);
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.2rem;
+        }
+
+        .stat-block .stat-number .suffix {
+            font-size: 1.4rem;
+            color: var(--accent);
+        }
+
+        .stat-block .stat-label {
+            color: var(--text-mist-dim);
+            font-size: 0.92rem;
+            margin-top: 0.4rem;
+        }
+
+        /* ---------- Mockup Section (محسّن) ---------- */
+        .mockup-section {
+            padding: 4rem 0;
+        }
+
+        .mockup-section .dashboard-mockup {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* ---------- Journey (محسّن) ---------- */
+        .journey {
+            padding: 4rem 0;
+        }
+
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .journey-step {
+            background: var(--bg-card);
+            padding: 1.8rem 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .journey-step::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            bottom: -1px;
+            left: -1px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .journey-step:hover::before {
+            opacity: 1;
+        }
+
+        .journey-step:hover {
+            transform: translateY(-4px);
+            border-color: transparent;
+        }
+
+        .step-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .journey-step h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .journey-step p {
+            color: var(--text-mist-dim);
+            font-size: 0.9rem;
+        }
+
+        /* ---------- CTA Section (محسّن) ---------- */
+        .cta-section {
+            padding: 4rem 0;
+        }
+
+        .cta-content {
+            background: linear-gradient(160deg, var(--bg-card), var(--bg-dark) 70%);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 4rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(10, 132, 255, 0.05), transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content h2 {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            color: var(--text-mist);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ---------- Footer (محسّن) ---------- */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-mist-dim);
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            max-width: 300px;
+        }
+
+        .footer-col h5 {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.9rem;
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-mist-dim);
+            font-size: 0.88rem;
+            margin-bottom: 0.6rem;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-mist-dim);
+            font-size: 0.85rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal a {
+            color: var(--text-mist-dim);
+        }
+
+        .footer-legal a:hover {
+            color: #fff;
+        }
+
+        /* ---------- Back to Top ---------- */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(10, 132, 255, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-4px);
+        }
+
+        /* ---------- Toast ---------- */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-card);
+            z-index: 9999;
+            animation: slideUp 0.3s ease forwards;
+            font-family: var(--font-body);
+        }
+
+        .toast-success {
+            border-color: #10B981;
+        }
+
+        .toast-error {
+            border-color: #EF4444;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---------- Reveal Animation ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s var(--transition), transform 0.6s var(--transition);
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---------- Responsive (محسّن) ---------- */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .journey-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .float-badge {
+                display: none;
+            }
+        }
+
+        @media (max-width: 880px) {
+            .nav-menu {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background: rgba(7, 17, 31, 0.98);
+                padding: 2rem 1.5rem;
+                flex-direction: column;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border-color);
+                transform: translateY(-120%);
+                transition: var(--transition);
+                opacity: 0;
+                visibility: hidden;
+                backdrop-filter: blur(14px);
+            }
+
+            .nav-menu.open {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-actions .btn-outline {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+
+            .mockup-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .stat-divider {
+                display: none;
+            }
+
+            .cta-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cta-buttons .btn-primary,
+            .cta-buttons .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-legal {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .mockup-chart {
+                height: 80px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <!-- ===== PRELOADER ===== -->
-    <div id="preloader">
-        <div class="loader">
-            <div class="loader-spinner"></div>
-            <div class="loader-text">جاري التحميل...</div>
+    <!-- ===== PRELOADER (محسّن) ===== -->
+    <div id="preloader" style="position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg-dark);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity 0.5s ease,visibility 0.5s ease;">
+        <div style="text-align:center;">
+            <div style="width:60px;height:60px;border:3px solid rgba(10,132,255,0.1);border-top-color:var(--primary);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem;"></div>
+            <div style="color:var(--text-muted);font-size:0.9rem;">جاري التحميل...</div>
         </div>
     </div>
 
-    <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER (محسّن) ===== -->
     <header class="header" role="banner">
         <div class="container">
             <nav class="navbar" aria-label="القائمة الرئيسية">
                 <div class="logo">
-                    <a href="index.html" aria-label="الرئيسية">
-                        <span class="logo-icon">SP</span>
-                        <span class="logo-text">Sky Properties</span>
-                    </a>
+                    <span class="logo-icon">SP</span>
+                    <span class="logo-text">Sky Properties</span>
                 </div>
                 
                 <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false">
@@ -76,38 +1260,40 @@
                     <li><a href="portfolio.html">أعمالنا</a></li>
                     <li><a href="dashboard.html">لوحة التحكم</a></li>
                     <li><a href="contact.html">اتصل</a></li>
-                    <li><a href="get-demo.html" class="btn-primary btn-sm">احجز عرضاً</a></li>
+                    <li class="nav-actions">
+                        <a href="get-demo.html" class="btn-primary" style="padding:0.6rem 1.5rem;font-size:0.9rem;">احجز عرضاً</a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- ===== HERO SECTION ===== -->
+        <!-- ===== HERO SECTION (محسّن) ===== -->
         <section class="hero" aria-label="القسم الرئيسي">
             <div class="container">
                 <div class="hero-grid">
                     <div class="hero-content">
                         <div class="hero-badge">
-                            <span class="badge-dot"></span>
+                            <span class="dot"></span>
                             منصة عقارية ذكية
                         </div>
                         <h1>
                             إدارة عقاراتك<br>
-                            <span class="gradient-text">بذكاء واحترافية</span>
+                            <span class="highlight">بذكاء واحترافية</span>
                         </h1>
                         <p class="hero-description">
                             منصة Sky Properties المتكاملة تمنحك تحليلاً فورياً، أتمتة ذكية، 
                             ولوحات تحكم متقدمة لإدارة ممتلكاتك بسلاسة وكفاءة.
                         </p>
                         <div class="hero-buttons">
-                            <a href="get-demo.html" class="btn-primary btn-lg">
+                            <a href="get-demo.html" class="btn-primary">
                                 <span>احجز عرضاً تجريبياً</span>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M5 12h14M12 5l7 7-7 7"/>
                                 </svg>
                             </a>
-                            <a href="features.html" class="btn-outline btn-lg">
+                            <a href="features.html" class="btn-outline">
                                 استكشف الحلول
                             </a>
                         </div>
@@ -179,12 +1365,20 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Float Badge من الملف المرفق -->
+                        <div class="float-badge">
+                            <div class="ico">✅</div>
+                            <div>
+                                عقد جديد تم توقيعه
+                                <div class="sub">منذ 3 دقائق</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== FEATURES ===== -->
+        <!-- ===== FEATURES (محسّن) ===== -->
         <section id="features" class="features" aria-labelledby="features-title">
             <div class="container">
                 <div class="section-header">
@@ -194,43 +1388,43 @@
                 </div>
                 
                 <div class="features-grid">
-                    <div class="feature-card" data-delay="0">
-                        <div class="feature-icon">🏢</div>
+                    <div class="feature-card reveal">
+                        <span class="feature-icon">🏢</span>
                         <h3>إدارة العقارات</h3>
                         <p>سجّل عقاراتك مع تفاصيل كاملة، صور، ورفع المستندات بسهولة.</p>
                         <a href="features.html#properties" class="feature-link">اعرف المزيد →</a>
                     </div>
                     
-                    <div class="feature-card" data-delay="100">
-                        <div class="feature-icon">👥</div>
+                    <div class="feature-card reveal">
+                        <span class="feature-icon">👥</span>
                         <h3>إدارة المستأجرين</h3>
                         <p>ملفات المستأجرين، تواريخ الإيجار، والتواصل المباشر عبر المنصة.</p>
                         <a href="features.html#tenants" class="feature-link">اعرف المزيد →</a>
                     </div>
                     
-                    <div class="feature-card" data-delay="200">
-                        <div class="feature-icon">🔧</div>
+                    <div class="feature-card reveal">
+                        <span class="feature-icon">🔧</span>
                         <h3>إدارة الصيانة</h3>
                         <p>تتبع طلبات الصيانة وجدولة الفرق الفنية بكفاءة واحترافية.</p>
                         <a href="features.html#maintenance" class="feature-link">اعرف المزيد →</a>
                     </div>
                     
-                    <div class="feature-card" data-delay="300">
-                        <div class="feature-icon">📄</div>
+                    <div class="feature-card reveal">
+                        <span class="feature-icon">📄</span>
                         <h3>العقود الرقمية</h3>
                         <p>إنشاء وتوقيع العقود إلكترونياً مع أرشفة ذكية لجميع الإصدارات.</p>
                         <a href="features.html#contracts" class="feature-link">اعرف المزيد →</a>
                     </div>
                     
-                    <div class="feature-card" data-delay="400">
-                        <div class="feature-icon">📊</div>
+                    <div class="feature-card reveal">
+                        <span class="feature-icon">📊</span>
                         <h3>التقارير الذكية</h3>
                         <p>تقارير دورية عن الأداء، الإشغال، والإيرادات مع تحليلات متقدمة.</p>
                         <a href="features.html#reports" class="feature-link">اعرف المزيد →</a>
                     </div>
                     
-                    <div class="feature-card" data-delay="500">
-                        <div class="feature-icon">⚡</div>
+                    <div class="feature-card reveal">
+                        <span class="feature-icon">⚡</span>
                         <h3>التحليلات الفورية</h3>
                         <p>لوحات تحكم حية مع مؤشرات أداء رئيسية ورسوم بيانية تفاعلية.</p>
                         <a href="features.html#analytics" class="feature-link">اعرف المزيد →</a>
@@ -239,83 +1433,84 @@
             </div>
         </section>
 
-        <!-- ===== WHY SKY ===== -->
-        <section class="why-sky" aria-labelledby="why-title">
+        <!-- ===== STATS SECTION (جديد من الملف المرفق) ===== -->
+        <section class="stats-section" aria-labelledby="stats-title">
             <div class="container">
-                <div class="why-grid">
-                    <div class="why-content">
-                        <span class="section-tag">لماذا سكاي بروبرتيز</span>
-                        <h2 id="why-title" class="section-title">منصة متكاملة لإدارة العقارات بذكاء</h2>
-                        <p class="why-description">
-                            في سكاي بروبرتيز، نقدم حلولاً رقمية متطورة تجمع بين التكنولوجيا والخبرة البشرية 
-                            لتحويل طريقة إدارة العقارات.
-                        </p>
-                        <ul class="why-list">
-                            <li>
-                                <span class="why-icon">🤖</span>
-                                <div>
-                                    <h4>أتمتة العمليات</h4>
-                                    <p>أتمتة المهام الروتينية مثل تحصيل الإيجار وإرسال الإشعارات</p>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="why-icon">📈</span>
-                                <div>
-                                    <h4>قرارات مبنية على البيانات</h4>
-                                    <p>تحليلات فورية وتقارير دقيقة لاتخاذ قرارات استراتيجية</p>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="why-icon">👤</span>
-                                <div>
-                                    <h4>تجربة مستأجر محسّنة</h4>
-                                    <p>تواصل سلس وطلبات صيانة سريعة لرضى المستأجرين</p>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="why-icon">💎</span>
-                                <div>
-                                    <h4>زيادة الإشغال والإيرادات</h4>
-                                    <p>أدوات تسويق ذكية وتحليل السوق لتعظيم العوائد</p>
-                                </div>
-                            </li>
-                        </ul>
+                <div class="section-header">
+                    <span class="section-tag">بالأرقام</span>
+                    <h2 id="stats-title" class="section-title">أرقام من محافظ تُدار على المنصة</h2>
+                    <p class="section-subtitle">إحصائيات حية تعكس كفاءة المنصة وثقة عملائنا</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-block reveal">
+                        <div class="stat-number">97<span class="suffix">%</span></div>
+                        <div class="stat-label">متوسط نسبة الإشغال</div>
                     </div>
-                    
-                    <div class="why-visual">
-                        <div class="stats-showcase">
-                            <div class="stat-circle">
-                                <svg viewBox="0 0 120 120">
-                                    <circle class="circle-bg" cx="60" cy="60" r="50"/>
-                                    <circle class="circle-progress" cx="60" cy="60" r="50" 
-                                            stroke-dasharray="314" stroke-dashoffset="31.4"/>
-                                </svg>
-                                <div class="stat-circle-content">
-                                    <span class="stat-number">90%</span>
-                                    <span class="stat-label">زيادة في الكفاءة</span>
-                                </div>
+                    <div class="stat-block reveal">
+                        <div class="stat-number">4.8<span class="suffix">د</span></div>
+                        <div class="stat-label">متوسط إغلاق طلب صيانة</div>
+                    </div>
+                    <div class="stat-block reveal">
+                        <div class="stat-number">+120</div>
+                        <div class="stat-label">عقار تحت الإدارة</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MOCKUP SECTION (محسّن) ===== -->
+        <section class="mockup-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">نظام متقدم</span>
+                    <h2 class="section-title">نظام إدارة متقدم</h2>
+                    <p class="section-subtitle">لوحات تحكم مرنة مع رؤية 360° لمحفظتك العقارية</p>
+                </div>
+                <div class="dashboard-mockup reveal">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="mockup-title">نظرة عامة — محفظتي</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-stats">
+                            <div class="mockup-stat">
+                                <span class="stat-value">284</span>
+                                <span class="stat-label">إجمالي العقارات</span>
                             </div>
-                            <div class="stat-circle">
-                                <svg viewBox="0 0 120 120">
-                                    <circle class="circle-bg" cx="60" cy="60" r="50"/>
-                                    <circle class="circle-progress" cx="60" cy="60" r="50" 
-                                            stroke-dasharray="314" stroke-dashoffset="62.8"/>
-                                </svg>
-                                <div class="stat-circle-content">
-                                    <span class="stat-number">80%</span>
-                                    <span class="stat-label">توفير في الوقت</span>
-                                </div>
+                            <div class="mockup-stat">
+                                <span class="stat-value">92%</span>
+                                <span class="stat-label">نسبة الإشغال</span>
                             </div>
-                            <div class="stat-circle">
-                                <svg viewBox="0 0 120 120">
-                                    <circle class="circle-bg" cx="60" cy="60" r="50"/>
-                                    <circle class="circle-progress" cx="60" cy="60" r="50" 
-                                            stroke-dasharray="314" stroke-dashoffset="94.2"/>
-                                </svg>
-                                <div class="stat-circle-content">
-                                    <span class="stat-number">70%</span>
-                                    <span class="stat-label">تقليل التكاليف</span>
-                                </div>
+                            <div class="mockup-stat">
+                                <span class="stat-value">SAR 1.2M</span>
+                                <span class="stat-label">الإيرادات الشهرية</span>
+                            </div>
+                        </div>
+                        <div class="mockup-chart">
+                            <div class="chart-bar" style="height: 60%"></div>
+                            <div class="chart-bar" style="height: 80%"></div>
+                            <div class="chart-bar" style="height: 45%"></div>
+                            <div class="chart-bar" style="height: 90%"></div>
+                            <div class="chart-bar" style="height: 70%"></div>
+                            <div class="chart-bar" style="height: 55%"></div>
+                            <div class="chart-bar" style="height: 85%"></div>
+                        </div>
+                        <div class="mockup-recent">
+                            <div class="recent-item">
+                                <span class="recent-status active"></span>
+                                <span class="recent-text">طلب صيانة جديد - عمارة النخيل</span>
+                            </div>
+                            <div class="recent-item">
+                                <span class="recent-status warning"></span>
+                                <span class="recent-text">تجديد عقد مستأجر - شقة ٣٠٢</span>
+                            </div>
+                            <div class="recent-item">
+                                <span class="recent-status success"></span>
+                                <span class="recent-text">دفعة إيجار مستلمة - SAR 15,000</span>
                             </div>
                         </div>
                     </div>
@@ -323,7 +1518,7 @@
             </div>
         </section>
 
-        <!-- ===== JOURNEY ===== -->
+        <!-- ===== JOURNEY (محسّن) ===== -->
         <section class="journey" aria-labelledby="journey-title">
             <div class="container">
                 <div class="section-header">
@@ -332,68 +1527,60 @@
                     <p class="section-subtitle">نرافقك في كل خطوة لتحقيق النجاح</p>
                 </div>
                 
-                <div class="journey-timeline">
-                    <div class="journey-step" data-step="1">
+                <div class="journey-grid">
+                    <div class="journey-step reveal">
                         <div class="step-number">1</div>
-                        <div class="step-content">
-                            <div class="step-icon">➕</div>
-                            <h3>إضافة العقار</h3>
-                            <p>أدخل بيانات العقار، الصور، الموقع، وجميع التفاصيل</p>
-                        </div>
+                        <div class="step-icon">➕</div>
+                        <h4>إضافة العقار</h4>
+                        <p>أدخل بيانات العقار، الصور، الموقع، وجميع التفاصيل</p>
                     </div>
                     
-                    <div class="journey-step" data-step="2">
+                    <div class="journey-step reveal">
                         <div class="step-number">2</div>
-                        <div class="step-content">
-                            <div class="step-icon">🔑</div>
-                            <h3>التأجير والتسويق</h3>
-                            <p>نشر العقار، استقبال الطلبات، وإتمام التعاقد</p>
-                        </div>
+                        <div class="step-icon">🔑</div>
+                        <h4>التأجير والتسويق</h4>
+                        <p>نشر العقار، استقبال الطلبات، وإتمام التعاقد</p>
                     </div>
                     
-                    <div class="journey-step" data-step="3">
+                    <div class="journey-step reveal">
                         <div class="step-number">3</div>
-                        <div class="step-content">
-                            <div class="step-icon">🧑‍💼</div>
-                            <h3>إدارة المستأجر</h3>
-                            <p>متابعة الإيجارات، التواصل، وطلبات الصيانة</p>
-                        </div>
+                        <div class="step-icon">🧑‍💼</div>
+                        <h4>إدارة المستأجر</h4>
+                        <p>متابعة الإيجارات، التواصل، وطلبات الصيانة</p>
                     </div>
                     
-                    <div class="journey-step" data-step="4">
+                    <div class="journey-step reveal">
                         <div class="step-number">4</div>
-                        <div class="step-content">
-                            <div class="step-icon">📈</div>
-                            <h3>التقارير والتحليلات</h3>
-                            <p>تحليل الأداء والإشغال والإيرادات بشكل دوري</p>
-                        </div>
+                        <div class="step-icon">📈</div>
+                        <h4>التقارير والتحليلات</h4>
+                        <p>تحليل الأداء والإشغال والإيرادات بشكل دوري</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== CTA ===== -->
+        <!-- ===== CTA SECTION (محسّن) ===== -->
         <section class="cta-section" aria-labelledby="cta-title">
             <div class="container">
-                <div class="cta-content">
-                    <span class="cta-badge">🚀 ابدأ الآن</span>
+                <div class="cta-content reveal">
+                    <span class="section-tag" style="display:inline-block;background:rgba(255,138,76,0.1);color:var(--accent);border-color:rgba(255,138,76,0.2);">🚀 ابدأ الآن</span>
                     <h2 id="cta-title">ابدأ التحول الرقمي للعقارات</h2>
                     <p>انضم إلى أكثر من 100 عميل يستخدمون Sky Properties لإدارة عقاراتهم بذكاء</p>
                     <div class="cta-buttons">
-                        <a href="get-demo.html" class="btn-primary btn-lg">
+                        <a href="get-demo.html" class="btn-primary">
                             احجز عرضاً تجريبياً
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
                         </a>
-                        <a href="contact.html" class="btn-outline btn-lg">تواصل معنا</a>
+                        <a href="contact.html" class="btn-outline">تواصل معنا</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER (محسّن) ===== -->
     <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-grid">
@@ -403,52 +1590,34 @@
                         <span class="logo-text">Sky Properties</span>
                     </div>
                     <p>منصة متكاملة لإدارة العقارات والمستأجرين والصيانة مع تقارير ذكية وتحليلات فورية.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="تويتر">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="لينكد إن">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="يوتيوب">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
-                        </a>
-                    </div>
                 </div>
                 
-                <div class="footer-links">
-                    <h4>المنصة</h4>
-                    <ul>
-                        <li><a href="features.html">المميزات</a></li>
-                        <li><a href="solutions.html">الحلول</a></li>
-                        <li><a href="portfolio.html">أعمالنا</a></li>
-                        <li><a href="dashboard.html">لوحة التحكم</a></li>
-                    </ul>
+                <div class="footer-col">
+                    <h5>المنصة</h5>
+                    <a href="features.html">المميزات</a>
+                    <a href="solutions.html">الحلول</a>
+                    <a href="portfolio.html">أعمالنا</a>
+                    <a href="dashboard.html">لوحة التحكم</a>
                 </div>
                 
-                <div class="footer-links">
-                    <h4>الدعم</h4>
-                    <ul>
-                        <li><a href="contact.html">اتصل بنا</a></li>
-                        <li><a href="get-demo.html">طلب عرض</a></li>
-                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
-                        <li><a href="#">الأسئلة الشائعة</a></li>
-                    </ul>
+                <div class="footer-col">
+                    <h5>الدعم</h5>
+                    <a href="contact.html">اتصل بنا</a>
+                    <a href="get-demo.html">طلب عرض</a>
+                    <a href="privacy.html">سياسة الخصوصية</a>
+                    <a href="#">الأسئلة الشائعة</a>
                 </div>
                 
-                <div class="footer-newsletter">
-                    <h4>اشترك في النشرة</h4>
-                    <p>احصل على أحدث التحديثات والعروض</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="بريدك الإلكتروني" aria-label="البريد الإلكتروني">
-                        <button type="submit" class="btn-primary btn-sm">اشتراك</button>
-                    </form>
+                <div class="footer-col">
+                    <h5>تابعنا</h5>
+                    <a href="#" style="display:flex;align-items:center;gap:0.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        تويتر
+                    </a>
+                    <a href="#" style="display:flex;align-items:center;gap:0.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        لينكد إن
+                    </a>
                 </div>
             </div>
             
@@ -469,7 +1638,144 @@
         </svg>
     </button>
 
-    <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/animations.js" defer></script>
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== Preloader =====
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(function() {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
+                }, 800);
+            }
+
+            // ===== Mobile Menu Toggle =====
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    const isOpen = this.classList.toggle('active');
+                    navMenu.classList.toggle('open');
+                    this.setAttribute('aria-expanded', isOpen);
+                });
+
+                navMenu.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navToggle.classList.remove('active');
+                        navMenu.classList.remove('open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
+            // ===== Header Scroll Effect =====
+            const header = document.querySelector('.header');
+            let lastScroll = 0;
+            
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                lastScroll = currentScroll;
+            });
+
+            // ===== Back to Top =====
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (backToTop) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+                });
+
+                backToTop.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // ===== Smooth Scroll =====
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // ===== Reveal on Scroll =====
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                revealElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                revealElements.forEach(function(el) {
+                    el.classList.add('in');
+                });
+            }
+
+            // ===== Toast (من الملف الأصلي) =====
+            window.showToast = function(message, type) {
+                type = type || 'success';
+                var existingToasts = document.querySelectorAll('.toast');
+                existingToasts.forEach(function(toast) { toast.remove(); });
+                
+                var toast = document.createElement('div');
+                toast.className = 'toast toast-' + type;
+                toast.textContent = message;
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(function() {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateY(-30px)';
+                    toast.style.transition = 'all 0.3s ease';
+                    
+                    setTimeout(function() {
+                        toast.remove();
+                    }, 300);
+                }, 5000);
+            };
+
+        })();
+    </script>
 </body>
 </html>
