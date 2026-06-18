@@ -1,576 +1,475 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sky Properties | سكاي بروبرتيز - منصة إدارة العقارات الذكية</title>
-  <meta name="description" content="منصة Sky Properties لإدارة وتسويق العقارات بحلول رقمية متقدمة، لوحات تحكم، تقارير ذكية، وأتمتة العقارات." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>" />
-  
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="Sky Properties | سكاي بروبرتيز" />
-  <meta property="og:description" content="منصة إدارة العقارات المتكاملة بحلول رقمية وتقارير ذكية." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="#" />
-  <meta name="theme-color" content="#0A84FF" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sky Properties | سكاي بروبرتيز - منصة إدارة العقارات الذكية</title>
+    <meta name="description" content="منصة Sky Properties المتكاملة لإدارة العقارات، المستأجرين، الصيانة، مع تقارير ذكية وتحليلات فورية." />
+    <meta name="keywords" content="إدارة عقارات, منصة عقارية, PropTech, إدارة مستأجرين, صيانة عقارات" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sky Properties | سكاي بروبرتيز" />
+    <meta property="og:description" content="منصة إدارة العقارات المتكاملة بحلول رقمية وتقارير ذكية." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yousif192025.github.io/sky-properties/" />
+    <meta property="og:image" content="https://yousif192025.github.io/sky-properties/assets/images/og-image.jpg" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0A84FF" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Sky Properties",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "منصة متكاملة لإدارة العقارات والمستأجرين والصيانة مع تقارير ذكية وتحليلات فورية.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
 
-  <style>
-    /* ===== CSS Variables ===== */
-    :root {
-      --primary: #0A84FF;
-      --secondary: #06B6D4;
-      --bg-dark: #07111F;
-      --bg-card: #101B2D;
-      --text-light: #F1F5F9;
-      --text-muted: #94A3B8;
-      --border-glow: rgba(10, 132, 255, 0.2);
-      --shadow-card: 0 20px 40px -12px rgba(0,0,0,0.8);
-      --radius-card: 24px;
-      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    }
-
-    /* ===== Reset & Base ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-    }
-    body {
-      background: var(--bg-dark);
-      color: var(--text-light);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      padding: 0 1.5rem;
-    }
-    a { color: var(--primary); text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    /* ===== Accessibility / Focus ===== */
-    :focus-visible {
-      outline: 2px solid var(--primary);
-      outline-offset: 4px;
-      border-radius: 6px;
-    }
-
-    /* ===== Buttons ===== */
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 0.9rem 2.2rem;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 8px 20px rgba(10, 132, 255, 0.3);
-      display: inline-block;
-    }
-    .btn-primary:hover {
-      background: #0066cc;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(10, 132, 255, 0.5);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid var(--primary);
-      color: var(--text-light);
-      padding: 0.9rem 2.2rem;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: var(--transition);
-      display: inline-block;
-    }
-    .btn-outline:hover {
-      background: var(--primary);
-      color: #fff;
-      transform: translateY(-3px);
-    }
-
-    /* ===== Header / Nav ===== */
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 0;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-    .logo span {
-      background: var(--primary);
-      color: #fff;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 14px;
-      font-size: 1.4rem;
-      font-weight: 800;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      color: var(--text-muted);
-      font-weight: 500;
-      transition: var(--transition);
-      font-size: 0.95rem;
-    }
-    .nav-links a:hover {
-      color: #fff;
-    }
-    .nav-cta {
-      background: var(--primary);
-      color: #fff !important;
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      font-weight: 600;
-    }
-    .nav-cta:hover {
-      background: #0066cc !important;
-      color: #fff !important;
-    }
-
-    /* ===== Hero ===== */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      padding: 3rem 0 5rem;
-    }
-    .hero-content h1 {
-      font-size: 3.2rem;
-      font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: -1px;
-    }
-    .hero-content h1 span {
-      color: var(--primary);
-    }
-    .hero-content p {
-      color: var(--text-muted);
-      font-size: 1.2rem;
-      margin: 1.5rem 0 2rem;
-      max-width: 90%;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .hero-image {
-      background: var(--bg-card);
-      border-radius: var(--radius-card);
-      padding: 1rem;
-      box-shadow: var(--shadow-card);
-      border: 1px solid rgba(10, 132, 255, 0.15);
-    }
-    .hero-image svg {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      background: #0a1a2e;
-    }
-
-    /* ===== Section Headers ===== */
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-    .section-sub {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 650px;
-    }
-
-    /* ===== Features Grid ===== */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    .feature-card {
-      background: var(--bg-card);
-      padding: 2rem 1.5rem;
-      border-radius: var(--radius-card);
-      border: 1px solid transparent;
-      transition: var(--transition);
-      box-shadow: var(--shadow-card);
-    }
-    .feature-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-8px);
-    }
-    .feature-card .icon {
-      background: rgba(10, 132, 255, 0.12);
-      width: 56px;
-      height: 56px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .feature-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.4rem;
-    }
-    .feature-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* ===== Stats ===== */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      background: var(--bg-card);
-      padding: 2.5rem 2rem;
-      border-radius: var(--radius-card);
-      margin: 2rem 0 4rem;
-      text-align: center;
-      border: 1px solid rgba(10, 132, 255, 0.1);
-    }
-    .stats-grid h2 {
-      font-size: 2.8rem;
-      color: var(--primary);
-      font-weight: 700;
-    }
-    .stats-grid p {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    /* ===== Mockup / Dashboard ===== */
-    .mockup-section {
-      background: var(--bg-card);
-      border-radius: var(--radius-card);
-      padding: 2rem;
-      border: 1px solid rgba(10, 132, 255, 0.1);
-      margin: 3rem 0;
-    }
-    .mockup-section svg {
-      width: 100%;
-      height: auto;
-    }
-
-    /* ===== Journey ===== */
-    .journey-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin: 2.5rem 0;
-    }
-    .journey-step {
-      background: var(--bg-card);
-      padding: 1.8rem 1.2rem;
-      border-radius: var(--radius-card);
-      border-right: 4px solid var(--primary);
-      transition: var(--transition);
-    }
-    .journey-step:hover {
-      transform: translateX(-6px);
-    }
-    .journey-step h4 {
-      font-size: 1.2rem;
-      margin-bottom: 0.3rem;
-    }
-    .journey-step p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* ===== CTA ===== */
-    .cta-section {
-      background: linear-gradient(145deg, #0a1a2e, var(--bg-card));
-      border-radius: var(--radius-card);
-      padding: 4rem 2rem;
-      text-align: center;
-      border: 1px solid rgba(10, 132, 255, 0.2);
-      margin: 4rem 0;
-    }
-    .cta-section h2 {
-      font-size: 2.8rem;
-      font-weight: 700;
-    }
-    .cta-section p {
-      color: var(--text-muted);
-      margin: 1rem 0 2rem;
-      font-size: 1.2rem;
-    }
-
-    /* ===== Footer ===== */
-    .footer {
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 2rem 0;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-    }
-    .footer-links a {
-      color: var(--text-muted);
-    }
-    .footer-links a:hover {
-      color: #fff;
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-content p {
-        max-width: 100%;
-      }
-      .hero-buttons {
-        justify-content: center;
-      }
-      .stats-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .section-title {
-        font-size: 2rem;
-      }
-    }
-    @media (max-width: 600px) {
-      body { padding: 0 1rem; }
-      .nav-links { gap: 1rem; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .hero-content h1 { font-size: 2.3rem; }
-      .cta-section h2 { font-size: 2rem; }
-      .footer { flex-direction: column; align-items: center; }
-    }
-
-    /* ===== Lazy loading / utility ===== */
-    .lazy {
-      opacity: 0;
-      transition: opacity 0.6s;
-    }
-    .lazy.loaded {
-      opacity: 1;
-    }
-  </style>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
 </head>
 <body>
-
-  <!-- ===== HEADER ===== -->
-  <header class="container">
-    <nav class="navbar" aria-label="القائمة الرئيسية">
-      <div class="logo">
-        <span>SP</span>
-        <span style="color: var(--text-light);">Sky Properties</span>
-      </div>
-      <div class="nav-links">
-        <a href="#">الرئيسية</a>
-        <a href="#features">المميزات</a>
-        <a href="#solutions">الحلول</a>
-        <a href="#portfolio">أعمالنا</a>
-        <a href="#contact">اتصل</a>
-        <a href="#" class="nav-cta">احجز عرضاً</a>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <!-- ===== HERO ===== -->
-    <section class="container hero" aria-label="القسم الرئيسي">
-      <div class="hero-content">
-        <h1>إدارة عقاراتك <span>بذكاء</span> واحترافية</h1>
-        <p>منصة Sky Properties المتكاملة تمنحك تحليلاً فورياً، أتمتة ذكية، ولوحات تحكم متقدمة لإدارة ممتلكاتك بسلاسة.</p>
-        <div class="hero-buttons">
-          <a href="#" class="btn-primary">احجز عرضاً تجريبياً</a>
-          <a href="#" class="btn-outline">استكشف الحلول</a>
+    <!-- ===== PRELOADER ===== -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">جاري التحميل...</div>
         </div>
-      </div>
-      <div class="hero-image">
-        <!-- Mockup Dashboard SVG (minimal) -->
-        <svg viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="500" height="300" rx="16" fill="#0E1A2B" />
-          <rect x="20" y="20" width="460" height="40" rx="8" fill="#1A2C42" />
-          <circle cx="40" cy="40" r="10" fill="#0A84FF" />
-          <rect x="70" y="30" width="100" height="20" rx="6" fill="#2A3F5A" />
-          <rect x="380" y="30" width="80" height="20" rx="6" fill="#2A3F5A" />
-          
-          <rect x="20" y="80" width="140" height="100" rx="12" fill="#15263B" />
-          <rect x="30" y="95" width="40" height="40" rx="8" fill="#0A84FF" opacity="0.2" />
-          <rect x="30" y="145" width="120" height="16" rx="6" fill="#1A2C42" />
-          
-          <rect x="180" y="80" width="140" height="100" rx="12" fill="#15263B" />
-          <rect x="190" y="95" width="40" height="40" rx="8" fill="#06B6D4" opacity="0.2" />
-          <rect x="190" y="145" width="120" height="16" rx="6" fill="#1A2C42" />
-          
-          <rect x="340" y="80" width="140" height="100" rx="12" fill="#15263B" />
-          <rect x="350" y="95" width="40" height="40" rx="8" fill="#0A84FF" opacity="0.2" />
-          <rect x="350" y="145" width="120" height="16" rx="6" fill="#1A2C42" />
-
-          <rect x="20" y="200" width="220" height="80" rx="12" fill="#15263B" />
-          <rect x="30" y="215" width="80" height="20" rx="6" fill="#0A84FF" opacity="0.3" />
-          <rect x="30" y="245" width="180" height="16" rx="6" fill="#1A2C42" />
-          
-          <rect x="260" y="200" width="220" height="80" rx="12" fill="#15263B" />
-          <rect x="270" y="215" width="80" height="20" rx="6" fill="#06B6D4" opacity="0.3" />
-          <rect x="270" y="245" width="180" height="16" rx="6" fill="#1A2C42" />
-        </svg>
-      </div>
-    </section>
-
-    <!-- ===== FEATURES ===== -->
-    <section id="features" class="container">
-      <h2 class="section-title">المميزات الرئيسية</h2>
-      <p class="section-sub">كل ما تحتاجه لإدارة عقاراتك في منصة واحدة ذكية ومتكاملة.</p>
-      <div class="features-grid">
-        <div class="feature-card"><div class="icon">🏢</div><h3>إدارة العقارات</h3><p>سجّل عقاراتك مع تفاصيل كاملة ورفع المستندات.</p></div>
-        <div class="feature-card"><div class="icon">👥</div><h3>إدارة المستأجرين</h3><p>ملفات المستأجرين، تواريخ الإيجار، والتواصل المباشر.</p></div>
-        <div class="feature-card"><div class="icon">🔧</div><h3>إدارة الصيانة</h3><p>تتبع طلبات الصيانة وجدولة الفرق الفنية.</p></div>
-        <div class="feature-card"><div class="icon">📄</div><h3>العقود الرقمية</h3><p>إنشاء وتوقيع العقود إلكترونياً بسهولة.</p></div>
-        <div class="feature-card"><div class="icon">📊</div><h3>التقارير الذكية</h3><p>تقارير دورية عن الأداء والإشغال والإيرادات.</p></div>
-        <div class="feature-card"><div class="icon">⚡</div><h3>التحليلات الفورية</h3><p>لوحات تحكم حية مع مؤشرات أداء رئيسية.</p></div>
-      </div>
-    </section>
-
-    <!-- ===== STATS ===== -->
-    <section class="container">
-      <div class="stats-grid">
-        <div><h2>99%</h2><p>رضا المستخدمين</p></div>
-        <div><h2>24/7</h2><p>دعم متواصل</p></div>
-        <div><h2>100+</h2><p>عقار تجريبي</p></div>
-      </div>
-    </section>
-
-    <!-- ===== MOCKUP ===== -->
-    <section class="container mockup-section">
-      <h2 class="section-title" style="font-size: 1.8rem;">نظام إدارة متقدم</h2>
-      <p class="section-sub" style="margin-bottom: 1.5rem;">لوحات تحكم مرنة مع رؤية 360° لمحفظتك العقارية.</p>
-      <svg viewBox="0 0 800 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="800" height="360" rx="20" fill="#0D1A2B" />
-        <rect x="20" y="20" width="760" height="50" rx="10" fill="#182A40" />
-        <circle cx="40" cy="45" r="8" fill="#0A84FF" />
-        <rect x="70" y="35" width="120" height="20" rx="6" fill="#263B55" />
-        <rect x="650" y="35" width="100" height="20" rx="6" fill="#263B55" />
-        
-        <rect x="20" y="90" width="280" height="120" rx="16" fill="#102232" />
-        <rect x="40" y="110" width="80" height="16" rx="6" fill="#0A84FF" opacity="0.3" />
-        <rect x="40" y="140" width="200" height="20" rx="6" fill="#1A2F45" />
-        <rect x="40" y="170" width="180" height="20" rx="6" fill="#1A2F45" />
-        
-        <rect x="320" y="90" width="220" height="120" rx="16" fill="#102232" />
-        <rect x="340" y="110" width="80" height="16" rx="6" fill="#06B6D4" opacity="0.3" />
-        <rect x="340" y="140" width="170" height="20" rx="6" fill="#1A2F45" />
-        <rect x="340" y="170" width="140" height="20" rx="6" fill="#1A2F45" />
-
-        <rect x="560" y="90" width="220" height="120" rx="16" fill="#102232" />
-        <rect x="580" y="110" width="80" height="16" rx="6" fill="#0A84FF" opacity="0.3" />
-        <rect x="580" y="140" width="170" height="20" rx="6" fill="#1A2F45" />
-        <rect x="580" y="170" width="140" height="20" rx="6" fill="#1A2F45" />
-
-        <rect x="20" y="230" width="760" height="110" rx="16" fill="#102232" />
-        <rect x="40" y="250" width="300" height="16" rx="6" fill="#0A84FF" opacity="0.2" />
-        <rect x="40" y="280" width="480" height="16" rx="6" fill="#1A2F45" />
-        <rect x="40" y="310" width="360" height="16" rx="6" fill="#1A2F45" />
-        <rect x="660" y="250" width="100" height="40" rx="8" fill="#0A84FF" opacity="0.6" />
-      </svg>
-    </section>
-
-    <!-- ===== JOURNEY ===== -->
-    <section class="container">
-      <h2 class="section-title">رحلة العميل</h2>
-      <p class="section-sub">من إضافة العقار إلى التقارير الذكية، نرافقك في كل خطوة.</p>
-      <div class="journey-grid">
-        <div class="journey-step"><h4>➕ إضافة العقار</h4><p>أدخل بيانات العقار، الصور، والموقع.</p></div>
-        <div class="journey-step"><h4>🔑 التأجير</h4><p>نشر العقار، استقبال الطلبات، وإتمام التعاقد.</p></div>
-        <div class="journey-step"><h4>🧑‍💼 إدارة المستأجر</h4><p>متابعة الإيجارات، التواصل، وطلبات الصيانة.</p></div>
-        <div class="journey-step"><h4>📈 التقارير</h4><p>تحليل الأداء والإشغال والإيرادات بشكل دوري.</p></div>
-      </div>
-    </section>
-
-    <!-- ===== CTA ===== -->
-    <section class="container cta-section">
-      <h2>ابدأ التحول الرقمي للعقارات</h2>
-      <p>انضم إلى أكثر من 100 عميل يستخدمون Sky Properties لإدارة عقاراتهم بذكاء.</p>
-      <a href="#" class="btn-primary" style="font-size: 1.2rem; padding: 1rem 3rem;">احجز عرضاً تجريبياً</a>
-    </section>
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="container footer">
-    <div>© 2026 Sky Properties — نموذج أعمال CyberPath Digital</div>
-    <div class="footer-links">
-      <a href="#">سياسة الخصوصية</a>
-      <a href="#">اتصل بنا</a>
-      <a href="#">طلب عرض</a>
     </div>
-  </footer>
 
-  <!-- ===== JavaScript (minimal) ===== -->
-  <script>
-    (function() {
-      // Lazy loading simulation for demo (just a class toggling)
-      const lazyElements = document.querySelectorAll('.lazy');
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('loaded');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { rootMargin: '0px 0px -50px 0px' });
-        lazyElements.forEach(el => observer.observe(el));
-      } else {
-        // fallback
-        lazyElements.forEach(el => el.classList.add('loaded'));
-      }
+    <!-- ===== HEADER ===== -->
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" aria-label="القائمة الرئيسية">
+                <div class="logo">
+                    <a href="index.html" aria-label="الرئيسية">
+                        <span class="logo-icon">SP</span>
+                        <span class="logo-text">Sky Properties</span>
+                    </a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">الرئيسية</a></li>
+                    <li><a href="features.html">المميزات</a></li>
+                    <li><a href="solutions.html">الحلول</a></li>
+                    <li><a href="portfolio.html">أعمالنا</a></li>
+                    <li><a href="dashboard.html">لوحة التحكم</a></li>
+                    <li><a href="contact.html">اتصل</a></li>
+                    <li><a href="get-demo.html" class="btn-primary btn-sm">احجز عرضاً</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-      // smooth anchor (optional)
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          const target = document.querySelector(targetId);
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        });
-      });
-    })();
-  </script>
+    <main>
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero" aria-label="القسم الرئيسي">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <span class="badge-dot"></span>
+                            منصة عقارية ذكية
+                        </div>
+                        <h1>
+                            إدارة عقاراتك<br>
+                            <span class="gradient-text">بذكاء واحترافية</span>
+                        </h1>
+                        <p class="hero-description">
+                            منصة Sky Properties المتكاملة تمنحك تحليلاً فورياً، أتمتة ذكية، 
+                            ولوحات تحكم متقدمة لإدارة ممتلكاتك بسلاسة وكفاءة.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="get-demo.html" class="btn-primary btn-lg">
+                                <span>احجز عرضاً تجريبياً</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                            <a href="features.html" class="btn-outline btn-lg">
+                                استكشف الحلول
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">99%</span>
+                                <span class="stat-label">رضا المستخدمين</span>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">دعم متواصل</span>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <span class="stat-number">100+</span>
+                                <span class="stat-label">عقار تجريبي</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual">
+                        <div class="dashboard-mockup">
+                            <div class="mockup-header">
+                                <div class="mockup-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="mockup-title">لوحة التحكم</span>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="mockup-stats">
+                                    <div class="mockup-stat">
+                                        <span class="stat-value">284</span>
+                                        <span class="stat-label">إجمالي العقارات</span>
+                                    </div>
+                                    <div class="mockup-stat">
+                                        <span class="stat-value">92%</span>
+                                        <span class="stat-label">نسبة الإشغال</span>
+                                    </div>
+                                    <div class="mockup-stat">
+                                        <span class="stat-value">SAR 1.2M</span>
+                                        <span class="stat-label">الإيرادات</span>
+                                    </div>
+                                </div>
+                                <div class="mockup-chart">
+                                    <div class="chart-bar" style="height: 60%"></div>
+                                    <div class="chart-bar" style="height: 80%"></div>
+                                    <div class="chart-bar" style="height: 45%"></div>
+                                    <div class="chart-bar" style="height: 90%"></div>
+                                    <div class="chart-bar" style="height: 70%"></div>
+                                    <div class="chart-bar" style="height: 55%"></div>
+                                    <div class="chart-bar" style="height: 85%"></div>
+                                </div>
+                                <div class="mockup-recent">
+                                    <div class="recent-item">
+                                        <span class="recent-status active"></span>
+                                        <span class="recent-text">طلب صيانة جديد</span>
+                                    </div>
+                                    <div class="recent-item">
+                                        <span class="recent-status warning"></span>
+                                        <span class="recent-text">تجديد عقد مستأجر</span>
+                                    </div>
+                                    <div class="recent-item">
+                                        <span class="recent-status success"></span>
+                                        <span class="recent-text">دفعة إيجار مستلمة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURES ===== -->
+        <section id="features" class="features" aria-labelledby="features-title">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">المميزات</span>
+                    <h2 id="features-title" class="section-title">كل ما تحتاجه في منصة واحدة</h2>
+                    <p class="section-subtitle">حلول متكاملة لإدارة العقارات والمستأجرين والصيانة</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card" data-delay="0">
+                        <div class="feature-icon">🏢</div>
+                        <h3>إدارة العقارات</h3>
+                        <p>سجّل عقاراتك مع تفاصيل كاملة، صور، ورفع المستندات بسهولة.</p>
+                        <a href="features.html#properties" class="feature-link">اعرف المزيد →</a>
+                    </div>
+                    
+                    <div class="feature-card" data-delay="100">
+                        <div class="feature-icon">👥</div>
+                        <h3>إدارة المستأجرين</h3>
+                        <p>ملفات المستأجرين، تواريخ الإيجار، والتواصل المباشر عبر المنصة.</p>
+                        <a href="features.html#tenants" class="feature-link">اعرف المزيد →</a>
+                    </div>
+                    
+                    <div class="feature-card" data-delay="200">
+                        <div class="feature-icon">🔧</div>
+                        <h3>إدارة الصيانة</h3>
+                        <p>تتبع طلبات الصيانة وجدولة الفرق الفنية بكفاءة واحترافية.</p>
+                        <a href="features.html#maintenance" class="feature-link">اعرف المزيد →</a>
+                    </div>
+                    
+                    <div class="feature-card" data-delay="300">
+                        <div class="feature-icon">📄</div>
+                        <h3>العقود الرقمية</h3>
+                        <p>إنشاء وتوقيع العقود إلكترونياً مع أرشفة ذكية لجميع الإصدارات.</p>
+                        <a href="features.html#contracts" class="feature-link">اعرف المزيد →</a>
+                    </div>
+                    
+                    <div class="feature-card" data-delay="400">
+                        <div class="feature-icon">📊</div>
+                        <h3>التقارير الذكية</h3>
+                        <p>تقارير دورية عن الأداء، الإشغال، والإيرادات مع تحليلات متقدمة.</p>
+                        <a href="features.html#reports" class="feature-link">اعرف المزيد →</a>
+                    </div>
+                    
+                    <div class="feature-card" data-delay="500">
+                        <div class="feature-icon">⚡</div>
+                        <h3>التحليلات الفورية</h3>
+                        <p>لوحات تحكم حية مع مؤشرات أداء رئيسية ورسوم بيانية تفاعلية.</p>
+                        <a href="features.html#analytics" class="feature-link">اعرف المزيد →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHY SKY ===== -->
+        <section class="why-sky" aria-labelledby="why-title">
+            <div class="container">
+                <div class="why-grid">
+                    <div class="why-content">
+                        <span class="section-tag">لماذا سكاي بروبرتيز</span>
+                        <h2 id="why-title" class="section-title">منصة متكاملة لإدارة العقارات بذكاء</h2>
+                        <p class="why-description">
+                            في سكاي بروبرتيز، نقدم حلولاً رقمية متطورة تجمع بين التكنولوجيا والخبرة البشرية 
+                            لتحويل طريقة إدارة العقارات.
+                        </p>
+                        <ul class="why-list">
+                            <li>
+                                <span class="why-icon">🤖</span>
+                                <div>
+                                    <h4>أتمتة العمليات</h4>
+                                    <p>أتمتة المهام الروتينية مثل تحصيل الإيجار وإرسال الإشعارات</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="why-icon">📈</span>
+                                <div>
+                                    <h4>قرارات مبنية على البيانات</h4>
+                                    <p>تحليلات فورية وتقارير دقيقة لاتخاذ قرارات استراتيجية</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="why-icon">👤</span>
+                                <div>
+                                    <h4>تجربة مستأجر محسّنة</h4>
+                                    <p>تواصل سلس وطلبات صيانة سريعة لرضى المستأجرين</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="why-icon">💎</span>
+                                <div>
+                                    <h4>زيادة الإشغال والإيرادات</h4>
+                                    <p>أدوات تسويق ذكية وتحليل السوق لتعظيم العوائد</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="why-visual">
+                        <div class="stats-showcase">
+                            <div class="stat-circle">
+                                <svg viewBox="0 0 120 120">
+                                    <circle class="circle-bg" cx="60" cy="60" r="50"/>
+                                    <circle class="circle-progress" cx="60" cy="60" r="50" 
+                                            stroke-dasharray="314" stroke-dashoffset="31.4"/>
+                                </svg>
+                                <div class="stat-circle-content">
+                                    <span class="stat-number">90%</span>
+                                    <span class="stat-label">زيادة في الكفاءة</span>
+                                </div>
+                            </div>
+                            <div class="stat-circle">
+                                <svg viewBox="0 0 120 120">
+                                    <circle class="circle-bg" cx="60" cy="60" r="50"/>
+                                    <circle class="circle-progress" cx="60" cy="60" r="50" 
+                                            stroke-dasharray="314" stroke-dashoffset="62.8"/>
+                                </svg>
+                                <div class="stat-circle-content">
+                                    <span class="stat-number">80%</span>
+                                    <span class="stat-label">توفير في الوقت</span>
+                                </div>
+                            </div>
+                            <div class="stat-circle">
+                                <svg viewBox="0 0 120 120">
+                                    <circle class="circle-bg" cx="60" cy="60" r="50"/>
+                                    <circle class="circle-progress" cx="60" cy="60" r="50" 
+                                            stroke-dasharray="314" stroke-dashoffset="94.2"/>
+                                </svg>
+                                <div class="stat-circle-content">
+                                    <span class="stat-number">70%</span>
+                                    <span class="stat-label">تقليل التكاليف</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== JOURNEY ===== -->
+        <section class="journey" aria-labelledby="journey-title">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">رحلة العميل</span>
+                    <h2 id="journey-title" class="section-title">من إضافة العقار إلى التقارير الذكية</h2>
+                    <p class="section-subtitle">نرافقك في كل خطوة لتحقيق النجاح</p>
+                </div>
+                
+                <div class="journey-timeline">
+                    <div class="journey-step" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-icon">➕</div>
+                            <h3>إضافة العقار</h3>
+                            <p>أدخل بيانات العقار، الصور، الموقع، وجميع التفاصيل</p>
+                        </div>
+                    </div>
+                    
+                    <div class="journey-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-icon">🔑</div>
+                            <h3>التأجير والتسويق</h3>
+                            <p>نشر العقار، استقبال الطلبات، وإتمام التعاقد</p>
+                        </div>
+                    </div>
+                    
+                    <div class="journey-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-icon">🧑‍💼</div>
+                            <h3>إدارة المستأجر</h3>
+                            <p>متابعة الإيجارات، التواصل، وطلبات الصيانة</p>
+                        </div>
+                    </div>
+                    
+                    <div class="journey-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-icon">📈</div>
+                            <h3>التقارير والتحليلات</h3>
+                            <p>تحليل الأداء والإشغال والإيرادات بشكل دوري</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA ===== -->
+        <section class="cta-section" aria-labelledby="cta-title">
+            <div class="container">
+                <div class="cta-content">
+                    <span class="cta-badge">🚀 ابدأ الآن</span>
+                    <h2 id="cta-title">ابدأ التحول الرقمي للعقارات</h2>
+                    <p>انضم إلى أكثر من 100 عميل يستخدمون Sky Properties لإدارة عقاراتهم بذكاء</p>
+                    <div class="cta-buttons">
+                        <a href="get-demo.html" class="btn-primary btn-lg">
+                            احجز عرضاً تجريبياً
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="contact.html" class="btn-outline btn-lg">تواصل معنا</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">SP</span>
+                        <span class="logo-text">Sky Properties</span>
+                    </div>
+                    <p>منصة متكاملة لإدارة العقارات والمستأجرين والصيانة مع تقارير ذكية وتحليلات فورية.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="تويتر">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="لينكد إن">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="يوتيوب">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>المنصة</h4>
+                    <ul>
+                        <li><a href="features.html">المميزات</a></li>
+                        <li><a href="solutions.html">الحلول</a></li>
+                        <li><a href="portfolio.html">أعمالنا</a></li>
+                        <li><a href="dashboard.html">لوحة التحكم</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>الدعم</h4>
+                    <ul>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="get-demo.html">طلب عرض</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>اشترك في النشرة</h4>
+                    <p>احصل على أحدث التحديثات والعروض</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" aria-label="البريد الإلكتروني">
+                        <button type="submit" class="btn-primary btn-sm">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2026 Sky Properties — نموذج أعمال <a href="#">CyberPath Digital</a></p>
+                <div class="footer-legal">
+                    <a href="privacy.html">سياسة الخصوصية</a>
+                    <a href="#">شروط الاستخدام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" aria-label="العودة للأعلى">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
 </body>
 </html>
