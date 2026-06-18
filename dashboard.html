@@ -3,19 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة التحكم - Sky Properties</title>
+    <title>لوحة التحكم - Sky Properties | سكاي بروبرتيز</title>
+    <meta name="description" content="لوحة تحكم Sky Properties تعرض إحصائيات العقارات والإشغال والإيرادات بشكل لحظي." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="لوحة التحكم - Sky Properties" />
+    <meta property="og:description" content="لوحة تحكم متقدمة لإدارة العقارات." />
+    <meta property="og:type" content="website" />
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Dashboard specific styles */
-        .dashboard-page {
-            padding-top: calc(var(--header-height) + 2rem);
-            padding-bottom: 4rem;
-        }
+        /* ============================================================
+           نفس التنسيقات المستخدمة في الصفحات السابقة
+           ============================================================ */
         
+        /* ---------- Variables ---------- */
+        :root {
+            --primary: #0A84FF;
+            --primary-dark: #0066CC;
+            --secondary: #06B6D4;
+            --accent: #FF8A4C;
+            --bg-dark: #07111F;
+            --bg-card: #101B2D;
+            --bg-card-hover: #1A2D4A;
+            --bg-soft: #0F1B2B;
+            --text-light: #F1F5F9;
+            --text-muted: #94A3B8;
+            --text-mist: #C8D3E0;
+            --text-mist-dim: #8B9CB3;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --shadow-card: 0 20px 40px -12px rgba(0, 0, 0, 0.8);
+            --shadow-accent: 0 10px 26px -8px rgba(255, 138, 76, 0.25);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-display: 'Cairo', sans-serif;
+            --font-body: 'Tajawal', 'Segoe UI', system-ui, sans-serif;
+            --max-width: 1280px;
+            --header-height: 72px;
+        }
+
+        /* ---------- Reset & Base ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.65;
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        ::selection {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ---------- Accessibility ---------- */
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+            border-radius: 6px;
+        }
+
+        /* ---------- Buttons ---------- */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: #fff !important;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+            box-shadow: 0 10px 26px -8px rgba(10, 132, 255, 0.45);
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px -6px rgba(10, 132, 255, 0.55);
+            color: #fff !important;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            border: 1.5px solid var(--border-color);
+            color: var(--text-light);
+            padding: 0.6rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: transform 0.25s, border-color 0.25s, color 0.25s, background 0.25s;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            background: rgba(10, 132, 255, 0.05);
+        }
+
+        /* ---------- Header ---------- */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 17, 31, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            height: var(--header-height);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(7, 17, 31, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--header-height);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .logo-icon {
+            background: linear-gradient(155deg, var(--accent), var(--primary) 130%);
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 900;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .logo-icon::after {
+            content: "";
+            position: absolute;
+            inset: 9px 7px 7px;
+            background: linear-gradient(to top, rgba(7, 17, 31, 0.5) 0 35%, transparent 35%);
+            clip-path: polygon(0% 100%, 0% 55%, 18% 55%, 18% 30%, 36% 30%, 36% 65%, 54% 65%, 54% 15%, 72% 15%, 72% 45%, 100% 45%, 100% 100%);
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            color: var(--text-light);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #fff;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-light);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ---------- Dashboard Page ---------- */
+        .dashboard-page {
+            padding: calc(var(--header-height) + 2rem) 0 4rem;
+        }
+
         .dashboard-header {
             display: flex;
             justify-content: space-between;
@@ -24,116 +302,332 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        
-        .dashboard-header h1 {
+
+        .dashboard-header .header-left h1 {
+            font-family: var(--font-display);
             font-size: 2rem;
+            font-weight: 800;
         }
-        
+
+        .dashboard-header .header-left p {
+            color: var(--text-mist-dim);
+            font-size: 0.95rem;
+        }
+
+        .dashboard-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        /* ---------- Stats Grid ---------- */
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-        
+
         .stat-card {
             background: var(--bg-card);
             padding: 1.5rem;
             border-radius: var(--radius-md);
             border: 1px solid var(--border-color);
-            transition: var(--transition);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
         .stat-card:hover {
-            border-color: var(--primary);
             transform: translateY(-4px);
+            border-color: rgba(10, 132, 255, 0.2);
+            box-shadow: var(--shadow-card);
         }
-        
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card .stat-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
         .stat-card .stat-label {
-            color: var(--text-muted);
+            color: var(--text-mist-dim);
             font-size: 0.85rem;
             margin-bottom: 0.25rem;
         }
-        
+
         .stat-card .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-light);
         }
-        
+
         .stat-card .stat-change {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             margin-top: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.15rem 0.6rem;
+            border-radius: 100px;
         }
-        
+
         .stat-change.positive {
             color: #10B981;
+            background: rgba(16, 185, 129, 0.1);
         }
-        
+
         .stat-change.negative {
             color: #EF4444;
+            background: rgba(239, 68, 68, 0.1);
         }
-        
+
+        .stat-change.neutral {
+            color: var(--text-mist-dim);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ---------- Charts ---------- */
         .dashboard-charts {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-        
+
         .chart-card {
             background: var(--bg-card);
             padding: 1.5rem;
             border-radius: var(--radius-md);
             border: 1px solid var(--border-color);
+            transition: var(--transition);
         }
-        
-        .chart-card h3 {
+
+        .chart-card:hover {
+            border-color: rgba(10, 132, 255, 0.15);
+        }
+
+        .chart-card .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 1rem;
-            font-size: 1.1rem;
         }
-        
-        .chart-placeholder {
+
+        .chart-card .chart-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .chart-card .chart-header .chart-period {
+            color: var(--text-mist-dim);
+            font-size: 0.8rem;
+            padding: 0.2rem 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+        }
+
+        /* Bar Chart */
+        .chart-bars-container {
             height: 200px;
             display: flex;
             align-items: flex-end;
-            gap: 12px;
-            padding: 1rem 0;
+            gap: 10px;
+            padding: 0.5rem 0 0.5rem;
+            position: relative;
         }
-        
-        .chart-bar-dashboard {
+
+        .chart-bar-wrapper {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            height: 100%;
+            justify-content: flex-end;
+        }
+
+        .chart-bar-dashboard {
+            width: 100%;
             background: linear-gradient(180deg, var(--primary), var(--secondary));
             border-radius: 4px 4px 0 0;
-            min-height: 20px;
+            min-height: 8px;
             transition: var(--transition);
             animation: chart-grow 1s ease forwards;
             opacity: 0;
+            transform-origin: bottom;
+            position: relative;
         }
-        
+
+        .chart-bar-dashboard:hover {
+            opacity: 1;
+            filter: brightness(1.2);
+        }
+
+        .chart-bar-dashboard .bar-value {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: var(--text-mist-dim);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .chart-bar-dashboard:hover .bar-value {
+            opacity: 1;
+        }
+
+        @keyframes chart-grow {
+            from {
+                opacity: 0;
+                transform: scaleY(0);
+            }
+            to {
+                opacity: 0.85;
+                transform: scaleY(1);
+            }
+        }
+
+        .chart-labels {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-mist-dim);
+            font-size: 0.75rem;
+            padding-top: 0.5rem;
+        }
+
+        /* Distribution Chart */
+        .distribution-item {
+            margin-bottom: 0.75rem;
+        }
+
+        .distribution-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .distribution-item .dist-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .distribution-item .dist-header .dist-label {
+            color: var(--text-mist);
+        }
+
+        .distribution-item .dist-header .dist-value {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .distribution-item .dist-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .distribution-item .dist-bar .dist-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+            width: 0;
+        }
+
+        .distribution-item .dist-bar .dist-fill.animated {
+            width: var(--fill);
+        }
+
+        .dist-fill.primary {
+            background: var(--primary);
+        }
+        .dist-fill.secondary {
+            background: var(--secondary);
+        }
+        .dist-fill.accent {
+            background: var(--accent);
+        }
+        .dist-fill.purple {
+            background: #8B5CF6;
+        }
+        .dist-fill.green {
+            background: #10B981;
+        }
+
+        /* ---------- Recent Activities ---------- */
         .recent-activities {
             background: var(--bg-card);
             padding: 1.5rem;
             border-radius: var(--radius-md);
             border: 1px solid var(--border-color);
+            transition: var(--transition);
         }
-        
-        .recent-activities h3 {
+
+        .recent-activities:hover {
+            border-color: rgba(10, 132, 255, 0.15);
+        }
+
+        .recent-activities .activities-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 1rem;
-            font-size: 1.1rem;
         }
-        
+
+        .recent-activities .activities-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .recent-activities .activities-header a {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .recent-activities .activities-header a:hover {
+            color: var(--accent);
+        }
+
         .activity-item {
             display: flex;
             align-items: center;
             gap: 1rem;
             padding: 0.75rem 0;
             border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
         }
-        
+
         .activity-item:last-child {
             border-bottom: none;
         }
-        
+
+        .activity-item:hover {
+            transform: translateX(-4px);
+        }
+
         .activity-icon {
             width: 40px;
             height: 40px;
@@ -141,56 +635,222 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(10, 132, 255, 0.1);
+            background: rgba(10, 132, 255, 0.08);
             font-size: 1.2rem;
             flex-shrink: 0;
+            transition: var(--transition);
         }
-        
+
+        .activity-item:hover .activity-icon {
+            background: rgba(10, 132, 255, 0.15);
+        }
+
         .activity-content {
             flex: 1;
         }
-        
+
         .activity-content .activity-text {
             font-size: 0.95rem;
         }
-        
+
         .activity-content .activity-time {
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: var(--text-mist-dim);
         }
-        
-        @media (max-width: 992px) {
+
+        .activity-pill {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .activity-pill.success {
+            background: rgba(16, 185, 129, 0.12);
+            color: #10B981;
+        }
+
+        .activity-pill.warning {
+            background: rgba(245, 158, 11, 0.12);
+            color: #F59E0B;
+        }
+
+        .activity-pill.danger {
+            background: rgba(239, 68, 68, 0.12);
+            color: #EF4444;
+        }
+
+        .activity-pill.primary {
+            background: rgba(10, 132, 255, 0.12);
+            color: var(--primary);
+        }
+
+        /* ---------- Footer ---------- */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--text-mist-dim);
+            font-size: 0.85rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal a {
+            color: var(--text-mist-dim);
+        }
+
+        .footer-legal a:hover {
+            color: #fff;
+        }
+
+        /* ---------- Back to Top ---------- */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(10, 132, 255, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-4px);
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 1024px) {
             .dashboard-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .dashboard-charts {
                 grid-template-columns: 1fr;
             }
         }
-        
-        @media (max-width: 480px) {
+
+        @media (max-width: 880px) {
+            .nav-menu {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background: rgba(7, 17, 31, 0.98);
+                padding: 2rem 1.5rem;
+                flex-direction: column;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border-color);
+                transform: translateY(-120%);
+                transition: var(--transition);
+                opacity: 0;
+                visibility: hidden;
+                backdrop-filter: blur(14px);
+            }
+
+            .nav-menu.open {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .dashboard-header .header-left h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 600px) {
             .dashboard-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .dashboard-actions {
+                width: 100%;
+            }
+
+            .dashboard-actions .btn-primary,
+            .dashboard-actions .btn-outline {
+                flex: 1;
+                justify-content: center;
+            }
+
+            .stat-card .stat-value {
+                font-size: 1.6rem;
+            }
+
+            .chart-bars-container {
+                height: 150px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-legal {
+                justify-content: center;
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- ===== HEADER ===== -->
     <header class="header" role="banner">
         <div class="container">
             <nav class="navbar" aria-label="القائمة الرئيسية">
                 <div class="logo">
-                    <a href="index.html">
-                        <span class="logo-icon">SP</span>
-                        <span class="logo-text">Sky Properties</span>
-                    </a>
+                    <span class="logo-icon">SP</span>
+                    <span class="logo-text">Sky Properties</span>
                 </div>
-                <button class="nav-toggle" aria-label="فتح القائمة">
+                
+                <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
+                
                 <ul class="nav-menu">
                     <li><a href="index.html">الرئيسية</a></li>
                     <li><a href="features.html">المميزات</a></li>
@@ -198,7 +858,9 @@
                     <li><a href="portfolio.html">أعمالنا</a></li>
                     <li><a href="dashboard.html" class="active">لوحة التحكم</a></li>
                     <li><a href="contact.html">اتصل</a></li>
-                    <li><a href="get-demo.html" class="btn-primary btn-sm">احجز عرضاً</a></li>
+                    <li class="nav-actions">
+                        <a href="get-demo.html" class="btn-primary">احجز عرضاً</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -206,54 +868,103 @@
 
     <main class="dashboard-page">
         <div class="container">
+            <!-- ===== DASHBOARD HEADER ===== -->
             <div class="dashboard-header">
-                <div>
-                    <h1>لوحة التحكم</h1>
-                    <p class="text-muted">نظرة عامة على أداء عقاراتك</p>
+                <div class="header-left">
+                    <h1>📊 لوحة التحكم</h1>
+                    <p>نظرة عامة على أداء محفظتك العقارية</p>
                 </div>
                 <div class="dashboard-actions">
-                    <button class="btn-primary btn-sm">تصدير التقرير</button>
-                    <button class="btn-outline btn-sm">تحديث</button>
+                    <button class="btn-primary" onclick="window.showToast('جاري تصدير التقرير...', 'success')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        تصدير التقرير
+                    </button>
+                    <button class="btn-outline" onclick="location.reload()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 4 23 10 17 10"/>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                        </svg>
+                        تحديث
+                    </button>
                 </div>
             </div>
 
-            <!-- Stats -->
+            <!-- ===== STATS CARDS ===== -->
             <div class="dashboard-grid">
                 <div class="stat-card">
+                    <div class="stat-icon">🏢</div>
                     <div class="stat-label">إجمالي العقارات</div>
                     <div class="stat-value">284</div>
                     <div class="stat-change positive">↑ 12% عن الشهر الماضي</div>
                 </div>
+                
                 <div class="stat-card">
+                    <div class="stat-icon">🔑</div>
                     <div class="stat-label">الوحدات المؤجرة</div>
                     <div class="stat-value">261</div>
                     <div class="stat-change positive">↑ 8% عن الشهر الماضي</div>
                 </div>
+                
                 <div class="stat-card">
+                    <div class="stat-icon">📈</div>
                     <div class="stat-label">نسبة الإشغال</div>
                     <div class="stat-value">92%</div>
                     <div class="stat-change positive">↑ 3% عن الشهر الماضي</div>
                 </div>
+                
                 <div class="stat-card">
+                    <div class="stat-icon">💰</div>
                     <div class="stat-label">الإيرادات الشهرية</div>
                     <div class="stat-value">SAR 1.2M</div>
                     <div class="stat-change positive">↑ 15% عن الشهر الماضي</div>
                 </div>
             </div>
 
-            <!-- Charts -->
+            <!-- ===== CHARTS ===== -->
             <div class="dashboard-charts">
+                <!-- Bar Chart -->
                 <div class="chart-card">
-                    <h3>نسبة الإشغال - آخر 6 أشهر</h3>
-                    <div class="chart-placeholder">
-                        <div class="chart-bar-dashboard" style="height: 65%"></div>
-                        <div class="chart-bar-dashboard" style="height: 72%"></div>
-                        <div class="chart-bar-dashboard" style="height: 78%"></div>
-                        <div class="chart-bar-dashboard" style="height: 85%"></div>
-                        <div class="chart-bar-dashboard" style="height: 88%"></div>
-                        <div class="chart-bar-dashboard" style="height: 92%"></div>
+                    <div class="chart-header">
+                        <h3>نسبة الإشغال - آخر 6 أشهر</h3>
+                        <span class="chart-period">2026</span>
                     </div>
-                    <div style="display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.8rem;">
+                    <div class="chart-bars-container">
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-dashboard" style="height: 65%; animation-delay: 0.1s;">
+                                <span class="bar-value">65%</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-dashboard" style="height: 72%; animation-delay: 0.2s;">
+                                <span class="bar-value">72%</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-dashboard" style="height: 78%; animation-delay: 0.3s;">
+                                <span class="bar-value">78%</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-dashboard" style="height: 85%; animation-delay: 0.4s;">
+                                <span class="bar-value">85%</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-dashboard" style="height: 88%; animation-delay: 0.5s;">
+                                <span class="bar-value">88%</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-dashboard" style="height: 92%; animation-delay: 0.6s;">
+                                <span class="bar-value">92%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-labels">
                         <span>يناير</span>
                         <span>فبراير</span>
                         <span>مارس</span>
@@ -262,83 +973,105 @@
                         <span>يونيو</span>
                     </div>
                 </div>
+
+                <!-- Distribution Chart -->
                 <div class="chart-card">
-                    <h3>توزيع العقارات</h3>
-                    <div style="display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem 0;">
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                <span>سكني</span>
-                                <span>65%</span>
+                    <div class="chart-header">
+                        <h3>توزيع العقارات</h3>
+                        <span class="chart-period">المجموع: 284</span>
+                    </div>
+                    <div style="padding: 0.5rem 0;">
+                        <div class="distribution-item">
+                            <div class="dist-header">
+                                <span class="dist-label">🏠 سكني</span>
+                                <span class="dist-value">65%</span>
                             </div>
-                            <div style="width: 100%; height: 8px; background: var(--border-color); border-radius: 4px; margin-top: 4px;">
-                                <div style="width: 65%; height: 100%; background: var(--primary); border-radius: 4px;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                <span>تجاري</span>
-                                <span>25%</span>
-                            </div>
-                            <div style="width: 100%; height: 8px; background: var(--border-color); border-radius: 4px; margin-top: 4px;">
-                                <div style="width: 25%; height: 100%; background: var(--secondary); border-radius: 4px;"></div>
+                            <div class="dist-bar">
+                                <div class="dist-fill primary animated" style="--fill: 65%; width: 65%;"></div>
                             </div>
                         </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                <span>صناعي</span>
-                                <span>10%</span>
+                        <div class="distribution-item">
+                            <div class="dist-header">
+                                <span class="dist-label">🏪 تجاري</span>
+                                <span class="dist-value">25%</span>
                             </div>
-                            <div style="width: 100%; height: 8px; background: var(--border-color); border-radius: 4px; margin-top: 4px;">
-                                <div style="width: 10%; height: 100%; background: #8B5CF6; border-radius: 4px;"></div>
+                            <div class="dist-bar">
+                                <div class="dist-fill secondary animated" style="--fill: 25%; width: 25%;"></div>
+                            </div>
+                        </div>
+                        <div class="distribution-item">
+                            <div class="dist-header">
+                                <span class="dist-label">🏭 صناعي</span>
+                                <span class="dist-value">10%</span>
+                            </div>
+                            <div class="dist-bar">
+                                <div class="dist-fill purple animated" style="--fill: 10%; width: 10%;"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Recent Activities -->
+            <!-- ===== RECENT ACTIVITIES ===== -->
             <div class="recent-activities">
-                <h3>آخر النشاطات</h3>
+                <div class="activities-header">
+                    <h3>📋 آخر النشاطات</h3>
+                    <a href="#">عرض الكل →</a>
+                </div>
+                
                 <div class="activity-item">
                     <div class="activity-icon">🏠</div>
                     <div class="activity-content">
                         <div class="activity-text">تم إضافة عقار جديد - فيلا في حي النخيل</div>
                         <div class="activity-time">منذ 5 دقائق</div>
                     </div>
-                    <span class="pill pill-success">مكتمل</span>
+                    <span class="activity-pill success">مكتمل</span>
                 </div>
+                
                 <div class="activity-item">
                     <div class="activity-icon">📄</div>
                     <div class="activity-content">
                         <div class="activity-text">تم توقيع عقد إيجار جديد - شقة في حي العقيق</div>
                         <div class="activity-time">منذ 2 ساعة</div>
                     </div>
-                    <span class="pill pill-warning">قيد المراجعة</span>
+                    <span class="activity-pill warning">قيد المراجعة</span>
                 </div>
+                
                 <div class="activity-item">
                     <div class="activity-icon">🔧</div>
                     <div class="activity-content">
-                        <div class="activity-text">طلب صيانة جديد - مشكلة في التكييف</div>
+                        <div class="activity-text">طلب صيانة جديد - مشكلة في التكييف - فيلا النخيل</div>
                         <div class="activity-time">منذ 5 ساعات</div>
                     </div>
-                    <span class="pill pill-danger">عاجل</span>
+                    <span class="activity-pill danger">عاجل</span>
                 </div>
+                
                 <div class="activity-item">
                     <div class="activity-icon">💳</div>
                     <div class="activity-content">
-                        <div class="activity-text">تم استلام دفعة إيجار - SAR 15,000</div>
+                        <div class="activity-text">تم استلام دفعة إيجار - SAR 15,000 من مستأجر برج النخيل</div>
                         <div class="activity-time">منذ يوم واحد</div>
                     </div>
-                    <span class="pill pill-primary">مكتمل</span>
+                    <span class="activity-pill success">مكتمل</span>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">📊</div>
+                    <div class="activity-content">
+                        <div class="activity-text">تقرير شهري جاهز للتصدير - يونيو 2026</div>
+                        <div class="activity-time">منذ يومين</div>
+                    </div>
+                    <span class="activity-pill primary">جاهز</span>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="footer">
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-bottom">
-                <p>© 2026 Sky Properties — نموذج أعمال CyberPath Digital</p>
+                <p>© 2026 Sky Properties — نموذج أعمال <a href="#">CyberPath Digital</a></p>
                 <div class="footer-legal">
                     <a href="privacy.html">سياسة الخصوصية</a>
                     <a href="#">شروط الاستخدام</a>
@@ -347,13 +1080,145 @@
         </div>
     </footer>
 
+    <!-- ===== BACK TO TOP ===== -->
     <button class="back-to-top" aria-label="العودة للأعلى">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M18 15l-6-6-6 6"/>
         </svg>
     </button>
 
-    <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/animations.js" defer></script>
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== Mobile Menu Toggle =====
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    const isOpen = this.classList.toggle('active');
+                    navMenu.classList.toggle('open');
+                    this.setAttribute('aria-expanded', isOpen);
+                });
+
+                navMenu.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navToggle.classList.remove('active');
+                        navMenu.classList.remove('open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
+            // ===== Header Scroll Effect =====
+            const header = document.querySelector('.header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // ===== Back to Top =====
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (backToTop) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+                });
+
+                backToTop.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // ===== Animate distribution bars on scroll =====
+            const distFills = document.querySelectorAll('.dist-fill');
+            
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            const fill = entry.target;
+                            const width = fill.style.width;
+                            fill.style.width = '0';
+                            setTimeout(function() {
+                                fill.style.width = width;
+                            }, 100);
+                            observer.unobserve(fill);
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                distFills.forEach(function(fill) {
+                    observer.observe(fill);
+                });
+            }
+
+            // ===== Toast Function =====
+            window.showToast = function(message, type) {
+                type = type || 'success';
+                
+                const existingToasts = document.querySelectorAll('.toast');
+                existingToasts.forEach(function(toast) { toast.remove(); });
+                
+                const toast = document.createElement('div');
+                toast.className = 'toast toast-' + type;
+                toast.textContent = message;
+                
+                document.body.appendChild(toast);
+                
+                // Add toast styles if not exists
+                if (!document.querySelector('#toast-styles')) {
+                    const style = document.createElement('style');
+                    style.id = 'toast-styles';
+                    style.textContent = `
+                        .toast {
+                            position: fixed;
+                            bottom: 2rem;
+                            right: 2rem;
+                            padding: 1rem 2rem;
+                            border-radius: 12px;
+                            background: var(--bg-card);
+                            color: var(--text-light);
+                            border: 1px solid var(--border-color);
+                            box-shadow: var(--shadow-card);
+                            z-index: 9999;
+                            animation: slideUp 0.3s ease forwards;
+                            font-family: var(--font-body);
+                        }
+                        .toast-success { border-color: #10B981; }
+                        .toast-error { border-color: #EF4444; }
+                        @keyframes slideUp {
+                            from { opacity: 0; transform: translateY(30px); }
+                            to { opacity: 1; transform: translateY(0); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+                
+                setTimeout(function() {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateY(-30px)';
+                    toast.style.transition = 'all 0.3s ease';
+                    
+                    setTimeout(function() {
+                        toast.remove();
+                    }, 300);
+                }, 5000);
+            };
+
+        })();
+    </script>
 </body>
 </html>
