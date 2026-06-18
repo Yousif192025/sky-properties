@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - Sky Properties</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <style>
+        /* Dashboard specific styles */
+        .dashboard-page {
+            padding-top: calc(var(--header-height) + 2rem);
+            padding-bottom: 4rem;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .dashboard-header h1 {
+            font-size: 2rem;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+        
+        .stat-card .stat-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .stat-card .stat-change {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        
+        .stat-change.positive {
+            color: #10B981;
+        }
+        
+        .stat-change.negative {
+            color: #EF4444;
+        }
+        
+        .dashboard-charts {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+        
+        .chart-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .chart-placeholder {
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            padding: 1rem 0;
+        }
+        
+        .chart-bar-dashboard {
+            flex: 1;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 4px 4px 0 0;
+            min-height: 20px;
+            transition: var(--transition);
+            animation: chart-grow 1s ease forwards;
+            opacity: 0;
+        }
+        
+        .recent-activities {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+        
+        .recent-activities h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10, 132, 255, 0.1);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-content .activity-text {
+            font-size: 0.95rem;
+        }
+        
+        .activity-content .activity-time {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        @media (max-width: 992px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .dashboard-charts {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" aria-label="القائمة الرئيسية">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-icon">SP</span>
+                        <span class="logo-text">Sky Properties</span>
+                    </a>
+                </div>
+                <button class="nav-toggle" aria-label="فتح القائمة">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="features.html">المميزات</a></li>
+                    <li><a href="solutions.html">الحلول</a></li>
+                    <li><a href="portfolio.html">أعمالنا</a></li>
+                    <li><a href="dashboard.html" class="active">لوحة التحكم</a></li>
+                    <li><a href="contact.html">اتصل</a></li>
+                    <li><a href="get-demo.html" class="btn-primary btn-sm">احجز عرضاً</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-page">
+        <div class="container">
+            <div class="dashboard-header">
+                <div>
+                    <h1>لوحة التحكم</h1>
+                    <p class="text-muted">نظرة عامة على أداء عقاراتك</p>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn-primary btn-sm">تصدير التقرير</button>
+                    <button class="btn-outline btn-sm">تحديث</button>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-label">إجمالي العقارات</div>
+                    <div class="stat-value">284</div>
+                    <div class="stat-change positive">↑ 12% عن الشهر الماضي</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">الوحدات المؤجرة</div>
+                    <div class="stat-value">261</div>
+                    <div class="stat-change positive">↑ 8% عن الشهر الماضي</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">نسبة الإشغال</div>
+                    <div class="stat-value">92%</div>
+                    <div class="stat-change positive">↑ 3% عن الشهر الماضي</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">الإيرادات الشهرية</div>
+                    <div class="stat-value">SAR 1.2M</div>
+                    <div class="stat-change positive">↑ 15% عن الشهر الماضي</div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="dashboard-charts">
+                <div class="chart-card">
+                    <h3>نسبة الإشغال - آخر 6 أشهر</h3>
+                    <div class="chart-placeholder">
+                        <div class="chart-bar-dashboard" style="height: 65%"></div>
+                        <div class="chart-bar-dashboard" style="height: 72%"></div>
+                        <div class="chart-bar-dashboard" style="height: 78%"></div>
+                        <div class="chart-bar-dashboard" style="height: 85%"></div>
+                        <div class="chart-bar-dashboard" style="height: 88%"></div>
+                        <div class="chart-bar-dashboard" style="height: 92%"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.8rem;">
+                        <span>يناير</span>
+                        <span>فبراير</span>
+                        <span>مارس</span>
+                        <span>أبريل</span>
+                        <span>مايو</span>
+                        <span>يونيو</span>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>توزيع العقارات</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem 0;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span>سكني</span>
+                                <span>65%</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: var(--border-color); border-radius: 4px; margin-top: 4px;">
+                                <div style="width: 65%; height: 100%; background: var(--primary); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span>تجاري</span>
+                                <span>25%</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: var(--border-color); border-radius: 4px; margin-top: 4px;">
+                                <div style="width: 25%; height: 100%; background: var(--secondary); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span>صناعي</span>
+                                <span>10%</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: var(--border-color); border-radius: 4px; margin-top: 4px;">
+                                <div style="width: 10%; height: 100%; background: #8B5CF6; border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="recent-activities">
+                <h3>آخر النشاطات</h3>
+                <div class="activity-item">
+                    <div class="activity-icon">🏠</div>
+                    <div class="activity-content">
+                        <div class="activity-text">تم إضافة عقار جديد - فيلا في حي النخيل</div>
+                        <div class="activity-time">منذ 5 دقائق</div>
+                    </div>
+                    <span class="pill pill-success">مكتمل</span>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">📄</div>
+                    <div class="activity-content">
+                        <div class="activity-text">تم توقيع عقد إيجار جديد - شقة في حي العقيق</div>
+                        <div class="activity-time">منذ 2 ساعة</div>
+                    </div>
+                    <span class="pill pill-warning">قيد المراجعة</span>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">🔧</div>
+                    <div class="activity-content">
+                        <div class="activity-text">طلب صيانة جديد - مشكلة في التكييف</div>
+                        <div class="activity-time">منذ 5 ساعات</div>
+                    </div>
+                    <span class="pill pill-danger">عاجل</span>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">💳</div>
+                    <div class="activity-content">
+                        <div class="activity-text">تم استلام دفعة إيجار - SAR 15,000</div>
+                        <div class="activity-time">منذ يوم واحد</div>
+                    </div>
+                    <span class="pill pill-primary">مكتمل</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 Sky Properties — نموذج أعمال CyberPath Digital</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">سياسة الخصوصية</a>
+                    <a href="#">شروط الاستخدام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="العودة للأعلى">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+</body>
+</html>
