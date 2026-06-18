@@ -1,4 +1,5 @@
 // ===== Form Handling =====
+
 document.addEventListener('DOMContentLoaded', function() {
     // Contact Form
     const contactForm = document.getElementById('contactForm');
