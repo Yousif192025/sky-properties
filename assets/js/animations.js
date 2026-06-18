@@ -1,4 +1,5 @@
 // ===== Advanced Animations =====
+
 document.addEventListener('DOMContentLoaded', function() {
     // Parallax effect for hero sections
     const hero = document.querySelector('.page-header, .hero');
