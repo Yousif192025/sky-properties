@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Property Ops Inbox — One queue for resident messages and maintenance</title>
+    <meta
+      name="description"
+      content="A 21-day implementation sprint that installs an operating layer for resident communications and maintenance triage. Built for residential property management firms with 300 to 1,500 doors."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="shell header-inner">
+          <a class="brand" href="#top" aria-label="Property Ops Inbox home">
+            <svg class="brand-mark" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="2" width="2.5" height="22" fill="#1f4438" />
+              <rect x="7" y="6" width="17" height="3" fill="#1f4438" />
+              <rect x="7" y="12" width="12" height="3" fill="#c25a36" />
+              <rect x="7" y="18" width="8" height="3" fill="#1f4438" opacity="0.45" />
+            </svg>
+            <span class="brand-text">Property Ops Inbox</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="#offer">The Sprint</a>
+            <a href="#process">Process</a>
+            <a href="#fit">Who It Fits</a>
+            <a href="#contact" class="nav-cta">Request Review</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero shell reveal">
+          <div class="hero-copy">
+            <p class="label">Residential Property Management</p>
+            <h1>One queue for the work your team is dropping today.</h1>
+            <p class="lead">
+              The 21-Day Property Operations Inbox Sprint installs a single operating layer for resident messages and maintenance triage. No new property management system. No chatbot. No reorg. Just one prioritized queue your coordinators actually work from.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contact">Request a workflow review</a>
+              <a class="button button-secondary" href="#offer">See what we install</a>
+            </div>
+            <ul class="hero-points" aria-label="Key points">
+              <li>Built for firms with roughly 300 to 1,500 doors under management.</li>
+              <li>Sits on top of your current tools without rip-and-replace.</li>
+              <li>Live in 21 days, tuned with your real traffic.</li>
+            </ul>
+          </div>
+
+          <aside class="inbox-preview" aria-label="Operations inbox preview">
+            <div class="inbox-bar">
+              <span>Operations Inbox · Live</span>
+              <span class="inbox-bar-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </span>
+            </div>
+            <div class="inbox-tabs">
+              <span class="inbox-tab active">All <span class="count">14</span></span>
+              <span class="inbox-tab">Urgent <span class="count">3</span></span>
+              <span class="inbox-tab">Maintenance <span class="count">8</span></span>
+              <span class="inbox-tab">Resident <span class="count">3</span></span>
+            </div>
+            <ul class="inbox-list">
+              <li class="inbox-item">
+                <span class="priority urgent" aria-hidden="true"></span>
+                <div class="inbox-meta">
+                  <div class="inbox-from">
+                    Unit 4B · Marquez
+                    <span class="tag urgent">Leak</span>
+                  </div>
+                  <div class="inbox-snippet">Water from upstairs unit, ceiling stained, photos attached…</div>
+                </div>
+                <span class="inbox-time">02m</span>
+              </li>
+              <li class="inbox-item">
+                <span class="priority urgent" aria-hidden="true"></span>
+                <div class="inbox-meta">
+                  <div class="inbox-from">
+                    Unit 12 · Park Heights
+                    <span class="tag urgent">HVAC</span>
+                  </div>
+                  <div class="inbox-snippet">No heat since this morning, asked for ETA on technician…</div>
+                </div>
+                <span class="inbox-time">11m</span>
+              </li>
+              <li class="inbox-item">
+                <span class="priority normal" aria-hidden="true"></span>
+                <div class="inbox-meta">
+                  <div class="inbox-from">
+                    Unit 8C · Whitman Lofts
+                    <span class="tag">Appliance</span>
+                  </div>
+                  <div class="inbox-snippet">Dishwasher not draining, requested service window…</div>
+                </div>
+                <span class="inbox-time">34m</span>
+              </li>
+              <li class="inbox-item">
+                <span class="priority normal" aria-hidden="true"></span>
+                <div class="inbox-meta">
+                  <div class="inbox-from">
+                    Unit 22 · Riverwalk
+                    <span class="tag">Renewal</span>
+                  </div>
+                  <div class="inbox-snippet">Asking about lease renewal terms before signing extension…</div>
+                </div>
+                <span class="inbox-time">1h</span>
+              </li>
+              <li class="inbox-item">
+                <span class="priority routine" aria-hidden="true"></span>
+                <div class="inbox-meta">
+                  <div class="inbox-from">
+                    Unit 5A · Marquez
+                    <span class="tag">Pest</span>
+                  </div>
+                  <div class="inbox-snippet">Routine quarterly pest, scheduled for Thursday window…</div>
+                </div>
+                <span class="inbox-time">2h</span>
+              </li>
+            </ul>
+            <div class="inbox-foot">
+              <span>14 open · 3 urgent</span>
+              <span><strong>9 cleared today</strong></span>
+            </div>
+          </aside>
+        </section>
+
+        <section class="problem-strip shell reveal">
+          <div class="section-intro">
+            <p class="label"><span class="label-num">01</span> The Operational Problem</p>
+            <h2>The same four failures show up across lean property teams.</h2>
+          </div>
+          <div class="problem-grid">
+            <article class="problem-item">
+              <p class="problem-num">01 / Scattered</p>
+              <h3>Messages live in four places.</h3>
+              <p>Resident requests hit email, text, web forms, and portal flows without a working operating view.</p>
+            </article>
+            <article class="problem-item">
+              <p class="problem-num">02 / Incomplete</p>
+              <h3>Maintenance arrives half-described.</h3>
+              <p>Requests show up missing photos, access details, urgency context, or scheduling information.</p>
+            </article>
+            <article class="problem-item">
+              <p class="problem-num">03 / Buried</p>
+              <h3>Urgent issues get buried.</h3>
+              <p>Leaks, lockouts, HVAC outages, pests, and safety issues compete with routine resident traffic.</p>
+            </article>
+            <article class="problem-item">
+              <p class="problem-num">04 / Repeated</p>
+              <h3>Staff repeat the same work.</h3>
+              <p>Coordinators spend hours answering repetitive questions and cleaning up bad handoffs by hand.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="offer-section shell reveal" id="offer">
+          <div class="section-intro">
+            <p class="label"><span class="label-num">02</span> The Sprint</p>
+            <h2>21-Day Property Operations Inbox Sprint.</h2>
+            <p>
+              A focused implementation for residential property management firms that need cleaner intake, faster response, and one prioritized queue for resident communication and maintenance triage.
+            </p>
+          </div>
+
+          <div class="offer-grid">
+            <article class="offer-headline">
+              <p class="label">Core Promise</p>
+              <h3>Get your team out of inbox chaos and into one working queue within 21 days.</h3>
+              <p>
+                We centralize the channels you care about, build triage and escalation rules, structure maintenance intake, and tune the workflow against your real traffic so staff can move faster without losing judgment on sensitive cases.
+              </p>
+            </article>
+
+            <div class="offer-deliverables">
+              <article class="deliverable">
+                <p class="deliverable-num">01 / Audit</p>
+                <h3>Channel Audit</h3>
+                <p>Map how resident messages enter the business, where they stall, and where information leaks.</p>
+              </article>
+              <article class="deliverable">
+                <p class="deliverable-num">02 / Triage</p>
+                <h3>Triage Rules</h3>
+                <p>Classify routine, urgent, and emergency traffic with clean escalation and ownership logic.</p>
+              </article>
+              <article class="deliverable">
+                <p class="deliverable-num">03 / Intake</p>
+                <h3>Maintenance Intake</h3>
+                <p>Chase missing details automatically so vendors and staff get usable requests, not vague complaints.</p>
+              </article>
+              <article class="deliverable">
+                <p class="deliverable-num">04 / Tuning</p>
+                <h3>Launch Tuning</h3>
+                <p>Review live traffic, tighten routing, and fix edge cases during the rollout window.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="process-section shell reveal" id="process">
+          <div class="section-intro">
+            <p class="label"><span class="label-num">03</span> How It Works</p>
+            <h2>A narrow rollout, not a broad software project.</h2>
+          </div>
+          <div class="timeline">
+            <article class="timeline-step">
+              <p class="timeline-week">Week 1</p>
+              <h3>Diagnostic and Workflow Mapping</h3>
+              <p>We audit channels, message types, escalation rules, current tools, and where the team is losing time.</p>
+            </article>
+            <article class="timeline-step">
+              <p class="timeline-week">Week 2</p>
+              <h3>Build the Inbox and Triage Logic</h3>
+              <p>We install routing, categorization, resident response patterns, and maintenance intake follow-up.</p>
+            </article>
+            <article class="timeline-step">
+              <p class="timeline-week">Week 3</p>
+              <h3>Go Live and Tune</h3>
+              <p>We review real traffic, refine edge cases, and tighten handoffs between automation, staff, and vendors.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="results-section shell reveal">
+          <div class="section-intro">
+            <p class="label"><span class="label-num">04</span> What Changes</p>
+            <h2>What the team should feel within the first week of going live.</h2>
+          </div>
+          <div class="results-board">
+            <article class="result-item">
+              <h3>Faster first responses.</h3>
+              <p>Routine traffic stops sitting untouched while staff decide what it is and who owns it.</p>
+            </article>
+            <article class="result-item">
+              <h3>Cleaner maintenance handoffs.</h3>
+              <p>Requests reach staff or vendors with better detail, fewer follow-up loops, and clearer next actions.</p>
+            </article>
+            <article class="result-item">
+              <h3>Better escalation control.</h3>
+              <p>Sensitive, urgent, and policy-risk issues are surfaced quickly instead of being hidden in the backlog.</p>
+            </article>
+            <article class="result-item">
+              <h3>Less repetitive inbox work.</h3>
+              <p>The team spends less time re-answering common questions and translating vague requests by hand.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="fit-section shell reveal" id="fit">
+          <div class="section-intro">
+            <p class="label"><span class="label-num">05</span> Fit</p>
+            <h2>Built for a specific kind of team.</h2>
+          </div>
+          <div class="fit-grid">
+            <article class="fit-col good">
+              <h2>Best fit</h2>
+              <ul>
+                <li>Roughly 300 to 1,500 doors under management.</li>
+                <li>Lean operations team juggling resident support and maintenance coordination.</li>
+                <li>Clear friction around response time, message backlog, or request handoffs.</li>
+                <li>Need an operating layer on top of current tools, not a full migration.</li>
+              </ul>
+            </article>
+            <article class="fit-col bad">
+              <h2>Not for</h2>
+              <ul>
+                <li>Firms expecting a full property management system overhaul.</li>
+                <li>Buyers shopping for a generic AI chatbot.</li>
+                <li>Teams unwilling to define escalation ownership and rollout support.</li>
+                <li>Very small portfolios without enough workflow volume to justify the sprint.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="guarantee-section shell reveal">
+          <div class="guarantee-card">
+            <div>
+              <p class="label"><span class="label-num">06</span> Guarantee</p>
+              <h2>Conditional, clear, and tied to going live.</h2>
+            </div>
+            <p>
+              If your team provides timely access, feedback, and approvals, and the workflow is not live within 21 days, we keep working at no extra cost until it is. No retainers. No scope creep.
+            </p>
+          </div>
+        </section>
+
+        <section class="faq-section shell reveal">
+          <div class="section-intro">
+            <p class="label"><span class="label-num">07</span> FAQ</p>
+            <h2>The questions a serious buyer asks.</h2>
+          </div>
+          <div class="faq-list">
+            <article class="faq-item">
+              <h3>Does this replace our PMS?</h3>
+              <p>No. The current positioning is an operating and workflow layer on top of your existing tools.</p>
+            </article>
+            <article class="faq-item">
+              <h3>Can humans still step in?</h3>
+              <p>Yes. The system is built around clear human handoff and escalation rules for sensitive cases.</p>
+            </article>
+            <article class="faq-item">
+              <h3>What channels does it cover first?</h3>
+              <p>Email, web forms, SMS, and portal-adjacent traffic are the focus for the initial rollout.</p>
+            </article>
+            <article class="faq-item">
+              <h3>What should the buyer expect from rollout?</h3>
+              <p>A narrow implementation sprint with weekly review and tuning. Not an open-ended consulting project.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="contact-section shell reveal" id="contact">
+          <div class="contact-card">
+            <div>
+              <p class="label">Next Step</p>
+              <h2>Start with a 15-minute workflow review.</h2>
+              <p>
+                We review how resident messages and maintenance requests move through your team today, identify the main handoff failures, and show what the first version of the inbox would need to fix.
+              </p>
+            </div>
+            <div class="contact-actions">
+              <a class="button button-primary" href="#top">Request a review</a>
+              <p class="contact-note">Replace this CTA with your live calendar link before sending traffic.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="shell footer-inner">
+          <a class="brand" href="#top">
+            <svg class="brand-mark" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="2" width="2.5" height="22" fill="#1f4438" />
+              <rect x="7" y="6" width="17" height="3" fill="#1f4438" />
+              <rect x="7" y="12" width="12" height="3" fill="#c25a36" />
+              <rect x="7" y="18" width="8" height="3" fill="#1f4438" opacity="0.45" />
+            </svg>
+            <span class="brand-text">Property Ops Inbox</span>
+          </a>
+          <p>Resident communications and maintenance triage for residential property management.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
