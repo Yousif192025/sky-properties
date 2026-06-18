@@ -1,4 +1,5 @@
 // ===== Navigation Active State =====
+
 document.addEventListener('DOMContentLoaded', function() {
     // Set active class on current page
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
