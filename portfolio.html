@@ -3,109 +3,1056 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أعمالنا - Sky Properties</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/components.css">
+    <title>أعمالنا - Sky Properties | سكاي بروبرتيز</title>
+    <meta name="description" content="نستعرض نماذج لمشاريع عقارية تم تنفيذها باستخدام منصة Sky Properties مع صور حقيقية." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="أعمالنا - Sky Properties" />
+    <meta property="og:description" content="نماذج لمشاريع عقارية تم تنفيذها باستخدام منصة Sky Properties." />
+    <meta property="og:type" content="website" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================================
+           نفس التنسيقات المستخدمة في الصفحات السابقة
+           ============================================================ */
+        
+        /* ---------- Variables ---------- */
+        :root {
+            --primary: #0A84FF;
+            --primary-dark: #0066CC;
+            --secondary: #06B6D4;
+            --accent: #FF8A4C;
+            --bg-dark: #07111F;
+            --bg-card: #101B2D;
+            --bg-card-hover: #1A2D4A;
+            --bg-soft: #0F1B2B;
+            --text-light: #F1F5F9;
+            --text-muted: #94A3B8;
+            --text-mist: #C8D3E0;
+            --text-mist-dim: #8B9CB3;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --shadow-card: 0 20px 40px -12px rgba(0, 0, 0, 0.8);
+            --shadow-accent: 0 10px 26px -8px rgba(255, 138, 76, 0.25);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-display: 'Cairo', sans-serif;
+            --font-body: 'Tajawal', 'Segoe UI', system-ui, sans-serif;
+            --max-width: 1180px;
+            --header-height: 72px;
+        }
+
+        /* ---------- Reset & Base ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.65;
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        ::selection {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ---------- Accessibility ---------- */
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+            border-radius: 6px;
+        }
+
+        /* ---------- Buttons ---------- */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: #fff !important;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+            box-shadow: 0 10px 26px -8px rgba(10, 132, 255, 0.45);
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px -6px rgba(10, 132, 255, 0.55);
+            color: #fff !important;
+        }
+
+        .btn-primary.btn-sm {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            border: 1.5px solid var(--border-color);
+            color: var(--text-light);
+            padding: 0.7rem 1.8rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: transform 0.25s, border-color 0.25s, color 0.25s, background 0.25s;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            background: rgba(10, 132, 255, 0.05);
+        }
+
+        /* ---------- Header ---------- */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 17, 31, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            height: var(--header-height);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(7, 17, 31, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--header-height);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .logo-icon {
+            background: linear-gradient(155deg, var(--accent), var(--primary) 130%);
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 900;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .logo-icon::after {
+            content: "";
+            position: absolute;
+            inset: 9px 7px 7px;
+            background: linear-gradient(to top, rgba(7, 17, 31, 0.5) 0 35%, transparent 35%);
+            clip-path: polygon(0% 100%, 0% 55%, 18% 55%, 18% 30%, 36% 30%, 36% 65%, 54% 65%, 54% 15%, 72% 15%, 72% 45%, 100% 45%, 100% 100%);
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            color: var(--text-light);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #fff;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-light);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ---------- Page Header ---------- */
+        .page-header {
+            padding: calc(var(--header-height) + 3rem) 0 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 60%;
+            height: 80%;
+            background: radial-gradient(ellipse, rgba(10, 132, 255, 0.04), transparent 70%);
+            pointer-events: none;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(255, 138, 76, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(255, 138, 76, 0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .page-header h1 span {
+            color: var(--accent);
+        }
+
+        .page-header p {
+            color: var(--text-mist);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ---------- Portfolio Grid ---------- */
+        .portfolio-grid {
+            padding: 3rem 0 5rem;
+        }
+
+        .portfolio-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-6px);
+            border-color: rgba(10, 132, 255, 0.25);
+            box-shadow: var(--shadow-card);
+        }
+
+        .portfolio-item.reverse {
+            direction: ltr;
+        }
+
+        .portfolio-item.reverse .portfolio-content {
+            direction: rtl;
+        }
+
+        .portfolio-image {
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            background: var(--bg-soft);
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-image .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(7, 17, 31, 0.8), transparent);
+        }
+
+        .portfolio-image .image-overlay .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #1A1106;
+            padding: 0.2rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .portfolio-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .portfolio-content .project-tag {
+            display: inline-block;
+            background: rgba(10, 132, 255, 0.1);
+            color: var(--primary);
+            padding: 0.2rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            align-self: flex-start;
+        }
+
+        .portfolio-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-content p {
+            color: var(--text-mist);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .portfolio-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.3rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-mist-dim);
+            border: 1px solid var(--border-color);
+        }
+
+        .portfolio-meta span .meta-icon {
+            font-size: 1rem;
+        }
+
+        .portfolio-content .btn-outline {
+            align-self: flex-start;
+        }
+
+        /* ---------- CTA Section ---------- */
+        .cta-section {
+            padding: 4rem 0;
+        }
+
+        .cta-content {
+            background: linear-gradient(160deg, var(--bg-card), var(--bg-dark) 70%);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 4rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(10, 132, 255, 0.05), transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content h2 {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.9rem;
+        }
+
+        .cta-content p {
+            color: var(--text-mist);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 520px;
+            margin-inline: auto;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ---------- Footer ---------- */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-mist-dim);
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            max-width: 300px;
+        }
+
+        .footer-col h5 {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.9rem;
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-mist-dim);
+            font-size: 0.88rem;
+            margin-bottom: 0.6rem;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-mist-dim);
+            font-size: 0.85rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal a {
+            color: var(--text-mist-dim);
+        }
+
+        .footer-legal a:hover {
+            color: #fff;
+        }
+
+        /* ---------- Reveal Animation ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s var(--transition), transform 0.6s var(--transition);
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---------- Back to Top ---------- */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(10, 132, 255, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-4px);
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 1024px) {
+            .portfolio-item {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item.reverse {
+                direction: rtl;
+            }
+
+            .portfolio-image {
+                min-height: 220px;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 880px) {
+            .nav-menu {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background: rgba(7, 17, 31, 0.98);
+                padding: 2rem 1.5rem;
+                flex-direction: column;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border-color);
+                transform: translateY(-120%);
+                transition: var(--transition);
+                opacity: 0;
+                visibility: hidden;
+                backdrop-filter: blur(14px);
+            }
+
+            .nav-menu.open {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-actions .btn-outline {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .portfolio-content {
+                padding: 1.5rem;
+            }
+
+            .portfolio-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .cta-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .portfolio-image {
+                min-height: 180px;
+            }
+
+            .portfolio-meta {
+                gap: 0.8rem;
+            }
+
+            .portfolio-meta span {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.7rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-legal {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cta-actions .btn-primary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="navbar">
+
+    <!-- ===== HEADER ===== -->
+    <header class="header" role="banner">
         <div class="container">
-            <div class="logo">
-                <span>SP</span>
-                <span>Sky Properties</span>
-            </div>
-            <nav>
-                <a href="index.html">الرئيسية</a>
-                <a href="features.html">المميزات</a>
-                <a href="solutions.html">الحلول</a>
-                <a href="portfolio.html" class="active">أعمالنا</a>
-                <a href="contact.html">اتصل</a>
-                <a href="get-demo.html" class="btn-primary">احجز عرضاً</a>
+            <nav class="navbar" aria-label="القائمة الرئيسية">
+                <div class="logo">
+                    <span class="logo-icon">SP</span>
+                    <span class="logo-text">Sky Properties</span>
+                </div>
+                
+                <button class="nav-toggle" aria-label="فتح القائمة" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="features.html">المميزات</a></li>
+                    <li><a href="solutions.html">الحلول</a></li>
+                    <li><a href="portfolio.html" class="active">أعمالنا</a></li>
+                    <li><a href="dashboard.html">لوحة التحكم</a></li>
+                    <li><a href="contact.html">اتصل</a></li>
+                    <li class="nav-actions">
+                        <a href="get-demo.html" class="btn-primary btn-sm">احجز عرضاً</a>
+                    </li>
+                </ul>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- ===== PAGE HEADER ===== -->
         <section class="page-header">
             <div class="container">
-                <h1>نماذج مشاريعنا</h1>
+                <span class="section-tag">🏗️ مشاريعنا</span>
+                <h1>نماذج <span>مشاريعنا</span></h1>
                 <p>نستعرض هنا نماذج لمشاريع عقارية تم تنفيذها باستخدام منصة Sky Properties</p>
             </div>
         </section>
 
+        <!-- ===== PORTFOLIO GRID ===== -->
         <section class="portfolio-grid">
             <div class="container">
-                <div class="portfolio-item">
+                <!-- Project 1 -->
+                <div class="portfolio-item reveal">
                     <div class="portfolio-image">
-                        <img src="assets/images/properties/project1.svg" alt="مشروع سكني">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=500&fit=crop&crop=center" alt="مشروع السكن الفاخر - فيلا عصرية" loading="lazy">
+                        <div class="image-overlay">
+                            <span class="badge">مشروع مكتمل</span>
+                        </div>
                     </div>
                     <div class="portfolio-content">
+                        <span class="project-tag">🏗️ تطوير سكني</span>
                         <h3>مشروع السكن الفاخر</h3>
-                        <p>مجمع سكني متكامل يضم 50 وحدة سكنية مع خدمات راقية.</p>
+                        <p>مجمع سكني متكامل يضم 50 وحدة سكنية مع خدمات راقية ومرافق متطورة في قلب المدينة.</p>
                         <div class="portfolio-meta">
-                            <span>🏗️ 50 وحدة</span>
-                            <span>📊 98% إشغال</span>
-                            <span>⭐ 4.9 تقييم</span>
+                            <span><span class="meta-icon">🏗️</span> 50 وحدة</span>
+                            <span><span class="meta-icon">📊</span> 98% إشغال</span>
+                            <span><span class="meta-icon">⭐</span> 4.9 تقييم</span>
                         </div>
-                        <a href="#" class="btn-outline">تفاصيل المشروع</a>
+                        <a href="#" class="btn-outline">تفاصيل المشروع →</a>
                     </div>
                 </div>
 
-                <div class="portfolio-item reverse">
+                <!-- Project 2 -->
+                <div class="portfolio-item reverse reveal">
                     <div class="portfolio-image">
-                        <img src="assets/images/properties/project2.svg" alt="مشروع تجاري">
+                        <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&h=500&fit=crop&crop=center" alt="المركز التجاري الحديث - واجهة زجاجية" loading="lazy">
+                        <div class="image-overlay">
+                            <span class="badge">مشروع مكتمل</span>
+                        </div>
                     </div>
                     <div class="portfolio-content">
+                        <span class="project-tag">🏪 تطوير تجاري</span>
                         <h3>المركز التجاري الحديث</h3>
-                        <p>مركز تجاري يضم 30 محلاً تجارياً مع إدارة ذكية.</p>
+                        <p>مركز تجاري يضم 30 محلاً تجارياً مع إدارة ذكية وأنظمة أمان متطورة ومواقف سيارات واسعة.</p>
                         <div class="portfolio-meta">
-                            <span>🏪 30 محل</span>
-                            <span>📊 95% إشغال</span>
-                            <span>⭐ 4.7 تقييم</span>
+                            <span><span class="meta-icon">🏪</span> 30 محل</span>
+                            <span><span class="meta-icon">📊</span> 95% إشغال</span>
+                            <span><span class="meta-icon">⭐</span> 4.7 تقييم</span>
                         </div>
-                        <a href="#" class="btn-outline">تفاصيل المشروع</a>
+                        <a href="#" class="btn-outline">تفاصيل المشروع →</a>
                     </div>
                 </div>
 
-                <div class="portfolio-item">
+                <!-- Project 3 -->
+                <div class="portfolio-item reveal">
                     <div class="portfolio-image">
-                        <img src="assets/images/properties/project3.svg" alt="مشروع سكني">
+                        <img src="https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800&h=500&fit=crop&crop=center" alt="قرية سكنية متكاملة - منظر علوي" loading="lazy">
+                        <div class="image-overlay">
+                            <span class="badge">قيد التطوير</span>
+                        </div>
                     </div>
                     <div class="portfolio-content">
+                        <span class="project-tag">🏘️ تطوير مجتمعي</span>
                         <h3>قرية سكنية متكاملة</h3>
-                        <p>قرية سكنية مع مرافق وخدمات مجتمعية متقدمة.</p>
+                        <p>قرية سكنية مع مرافق وخدمات مجتمعية متقدمة تشمل مدارس ومراكز صحية ومساحات خضراء.</p>
                         <div class="portfolio-meta">
-                            <span>🏘️ 200 وحدة</span>
-                            <span>📊 92% إشغال</span>
-                            <span>⭐ 4.8 تقييم</span>
+                            <span><span class="meta-icon">🏘️</span> 200 وحدة</span>
+                            <span><span class="meta-icon">📊</span> 92% إشغال</span>
+                            <span><span class="meta-icon">⭐</span> 4.8 تقييم</span>
                         </div>
-                        <a href="#" class="btn-outline">تفاصيل المشروع</a>
+                        <a href="#" class="btn-outline">تفاصيل المشروع →</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 (مشروع إضافي) -->
+                <div class="portfolio-item reverse reveal">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=500&fit=crop&crop=center" alt="برج المكاتب الذكي" loading="lazy">
+                        <div class="image-overlay">
+                            <span class="badge">مشروع مكتمل</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="project-tag">🏢 تطوير إداري</span>
+                        <h3>برج المكاتب الذكي</h3>
+                        <p>برج إداري يضم 40 مكتباً مجهزاً بأحدث التقنيات مع أنظمة إدارة ذكية ومرافق متكاملة.</p>
+                        <div class="portfolio-meta">
+                            <span><span class="meta-icon">🏢</span> 40 مكتب</span>
+                            <span><span class="meta-icon">📊</span> 97% إشغال</span>
+                            <span><span class="meta-icon">⭐</span> 4.9 تقييم</span>
+                        </div>
+                        <a href="#" class="btn-outline">تفاصيل المشروع →</a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ===== CTA SECTION ===== -->
         <section class="cta-section">
             <div class="container">
-                <h2>هل لديك مشروع؟</h2>
-                <p>دعنا نساعدك في إدارة مشروعك العقاري بكفاءة</p>
-                <a href="contact.html" class="btn-primary">تحدث مع خبرائنا</a>
+                <div class="cta-content reveal">
+                    <span class="section-tag" style="display:inline-block;background:rgba(255,138,76,0.1);color:var(--accent);border-color:rgba(255,138,76,0.2);">💡 لديك مشروع؟</span>
+                    <h2>هل لديك مشروع؟</h2>
+                    <p>دعنا نساعدك في إدارة مشروعك العقاري بكفاءة واحترافية</p>
+                    <div class="cta-actions">
+                        <a href="contact.html" class="btn-primary">
+                            تحدث مع خبرائنا
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
         <div class="container">
-            <p>© 2026 Sky Properties — نموذج أعمال CyberPath Digital</p>
-            <nav>
-                <a href="privacy.html">سياسة الخصوصية</a>
-                <a href="contact.html">اتصل بنا</a>
-                <a href="get-demo.html">طلب عرض</a>
-            </nav>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">SP</span>
+                        <span class="logo-text">Sky Properties</span>
+                    </div>
+                    <p>منصة متكاملة لإدارة العقارات والمستأجرين والصيانة مع تقارير ذكية وتحليلات فورية.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h5>المنصة</h5>
+                    <a href="features.html">المميزات</a>
+                    <a href="solutions.html">الحلول</a>
+                    <a href="portfolio.html">أعمالنا</a>
+                    <a href="dashboard.html">لوحة التحكم</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h5>الدعم</h5>
+                    <a href="contact.html">اتصل بنا</a>
+                    <a href="get-demo.html">طلب عرض</a>
+                    <a href="privacy.html">سياسة الخصوصية</a>
+                    <a href="#">الأسئلة الشائعة</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h5>تابعنا</h5>
+                    <a href="#" style="display:flex;align-items:center;gap:0.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        تويتر
+                    </a>
+                    <a href="#" style="display:flex;align-items:center;gap:0.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        لينكد إن
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2026 Sky Properties — نموذج أعمال <a href="#">CyberPath Digital</a></p>
+                <div class="footer-legal">
+                    <a href="privacy.html">سياسة الخصوصية</a>
+                    <a href="#">شروط الاستخدام</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/animations.js"></script>
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" aria-label="العودة للأعلى">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== Mobile Menu Toggle =====
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    const isOpen = this.classList.toggle('active');
+                    navMenu.classList.toggle('open');
+                    this.setAttribute('aria-expanded', isOpen);
+                });
+
+                navMenu.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navToggle.classList.remove('active');
+                        navMenu.classList.remove('open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
+            // ===== Header Scroll Effect =====
+            const header = document.querySelector('.header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // ===== Back to Top =====
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (backToTop) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+                });
+
+                backToTop.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // ===== Reveal on Scroll =====
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                revealElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                revealElements.forEach(function(el) {
+                    el.classList.add('in');
+                });
+            }
+
+            // ===== Lazy Loading for images =====
+            if ('IntersectionObserver' in window) {
+                const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+                const imageObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.src;
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(function(img) {
+                    imageObserver.observe(img);
+                });
+            }
+
+        })();
+    </script>
 </body>
 </html>
